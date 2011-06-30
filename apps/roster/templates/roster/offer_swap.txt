@@ -1,0 +1,16 @@
+Hi {{ your_name }},
+
+*{{ user_name }}* would like to swap with you to be sheriff on *{{ date_formatted }}*
+{% if comment %}
+Comment:
+{{ comment|safe }}
+{% endif %}
+
+To *accept*, click on this link:
+{{ accept_url }}
+
+To *deline*, click on this link:
+{{ decline_url }}
+
+--
+{{ settings.EMAIL_SIGNATURE }}

@@ -2,19 +2,23 @@ from django.conf import settings
 from django.conf.urls.defaults import *
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
-    (r'', include('examples.urls')),
+    (r'^users/', include('users.urls')),
+    (r'^roster/', include('roster.urls')),
+    (r'', include('cal.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # (r'^admin/', include(admin.site.urls)),
+    (r'^admin/', include(admin.site.urls)),
 )
+
+handler404 = 'cal.views.handler404'
 
 ## In DEBUG mode, serve media files through Django.
 if settings.DEBUG:

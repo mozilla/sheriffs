@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block extra_site_css %}
+{{ css('roster.index') }}
+{% endblock %}
+
+{% block content %}
+
+
+{% if request.user.is_authenticated() %}
+<div class="options">
+  <h3>Options</h3>
+  {% if request.user.is_staff or request.user.is_superuser %}
+  {#
+  <p>
+    <a href="{{ url('roster.insert') }}">Insert user into roster</a>
+  </p>
+  #}
+  <p>
+    <a href="{{ url('roster.initialize') }}">Initialize more roster slots</a>
+  </p>
+  <p>
+    <a href="{{ url('roster.replace') }}">Replace users' slots</a>
+  </p>
+  {% endif %}
+</div>
+{% endif %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Who</th>
+      <th>&nbsp;</th>
+      <th>When</th>
+    </tr>
+  </thead>
+  <tfoot class="pagination">
+    <tr>
+      <td colspan="2" class="step-links">
+        {% if slots.has_previous() %}
+            <a href="?page={{ slots.previous_page_number() }}&amp;include_past={{ include_past }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ slots.number }} of {{ slots.paginator.num_pages }}.
+        </span>
+
+        {% if slots.has_next() %}
+            <a href="?page={{ slots.next_page_number() }}&amp;include_past={{ include_past }}">next</a>
+        {% endif %}
+      </td>
+      <td>
+      {% if include_past %}
+      <a href=".">hide past slots</a>
+      {% else %}
+      <a href=".?include_past=1">include past slots</a>
+      {% endif %}
+      </td>
+    </tr>
+  </tfoot>
+  <tbody>
+  {% set is_admin = request.user.is_staff or request.user.is_superuser %}
+  {% for slot in slots.object_list %}
+  <tr class="user-{{ slot.user.pk }} {% if request.user.is_authenticated() and request.user == slot.user %}you{% endif %}">
+    <td class="name">{{ get_user_name(slot.user) }}</td>
+
+    <td>
+       {% if is_admin %}
+        <a href="{{ url('roster.replace_slot', slot.pk) }}"
+           title="Click to replace user on this slot">replace</a>
+       {% endif %}
+    </td>
+    <td>{{ format_date(slot.date) }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

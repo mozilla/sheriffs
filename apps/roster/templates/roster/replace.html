@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block extra_site_css %}
+{{ css('jquery_ui.datepicker') }}
+{% endblock %}
+
+{% block content %}
+
+<h2>Replace users' slots</h2>
+
+{% if form.fields['from_username'].choices %}
+<form action="." method="post">{{ csrf() }}
+
+<table>
+{{ form|safe }}
+<tr>
+  <td>&nbsp;</td>
+  <td><input type="submit" value="Replace"></td>
+</tr>
+</table>
+</form>
+{% else %}
+<p>There are no users' slots to replace.</p>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_site_js %}
+{{ js('jquery_ui.datepicker') }}
+{% endblock %}

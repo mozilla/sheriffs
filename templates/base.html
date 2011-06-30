@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html LANG="{{ LANG }}" dir="{{ DIR }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+  <link rel="shortcut icon" href="/media/img/favicon.ico">
+  <title>{% block page_title %}Mozilla Sheriff Duty{% endblock %}</title>
+{% block site_css %}
+{{ css('common_css') }}
+{% endblock %}
+{% block extra_site_css %}
+{% endblock %}
+</head>
+
+<body>
+{% for msg in messages %}
+<div class="{{ msg.tags }} message">
+  <h3>{{ msg.tags.capitalize() }}!</h3>
+  <p>{{ msg }}</p>
+</div>
+{% endfor %}
+<div id="body">
+
+<div id="header">
+	<h1>Mozilla Sheriff Duty</h1>
+
+	<ul id="tabs">
+		<li><a {% if active_tab == 'calendar' %}class="active"{% endif %}
+                      href="{{ url('cal.home') }}">Calendar</a></li>
+		<li><a {% if active_tab == 'roster' %}class="active"{% endif %}
+                      href="{{ url('roster.index') }}">Roster</a></li>
+		<!-- <li><a href="#settings">Login / Register</a></li> -->
+		<li><a {% if active_tab == 'settings' %}class="active"{% endif %}
+                        href="{{ url('users.settings') }}">Settings</a></li>
+	</ul>
+
+	<div id="user">
+
+                {% if request.user.is_authenticated() %}
+    		  Howdy,
+                  {% if request.user.first_name %}
+                  <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong>
+                  {% else %}
+                  <strong>{{ request.user.username }}</strong>
+                  {% endif %}
+                  {% if request.user.is_superuser %}
+                  (superuser)
+                  {% else %}
+                    {% if request.user.is_staff %}
+                    (admin)
+                    {% endif %}
+                  {% endif %}
+		<a href="{{ url('users.logout') }}">Log Out</a>
+                {% else %}
+                Howdy stranger
+		<a href="{{ url('users.login') }}">Log In</a>
+                {% endif %}
+	</div>
+</div>
+
+<div id="content">
+{% block content %}
+{% endblock %}
+</div>
+
+</div><!-- /#body -->
+
+{% block site_js %}
+{{ js('core') }}
+{% endblock %}
+{% block extra_site_js %}
+{% endblock %}
+
+</body>
+</html>

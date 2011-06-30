@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Replace slot</h2>
+
+<table>
+  <tr>
+    <td class="label">Date:</td>
+    <td>{{ format_date(slot.date) }}</td>
+  </tr>
+  <tr>
+    <td class="label">User:</td>
+    <td>{{ get_user_name(slot.user) }}</td>
+  </tr>
+</table>
+
+
+{% if form.fields['to_username'].choices %}
+<form action="." method="post">{{ csrf() }}
+
+<table>
+{{ form|safe }}
+<tr>
+  <td>&nbsp;</td>
+  <td><input type="submit" value="Replace"></td>
+</tr>
+</table>
+</form>
+{% else %}
+<p>There are no users to replace this with.</p>
+{% endif %}
+
+{% endblock %}

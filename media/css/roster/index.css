@@ -1,0 +1,5 @@
+tr.you td { font-weight:bold; }
+table th { font-weight:bold; text-align:left; }
+td, th { padding:2px 20px; }
+table { margin-bottom:50px; }
+.options { float:right; }

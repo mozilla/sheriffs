@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{{ url('users.login') }}" method="post">{{ csrf() }}
+{% if next %}
+<div style="display:none"><input name="next" value="{{ next }}"></div>
+{% endif %}
+<table>
+{{ form.as_table()|safe }}
+<tr>
+  <td>&nbsp;</td>
+  <td><input type="submit" value="Log In"></td>
+</tr>
+</table>
+</form>
+{% endblock %}

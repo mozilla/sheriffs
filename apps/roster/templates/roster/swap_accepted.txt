@@ -1,0 +1,6 @@
+Hi {{ your_name }},
+
+{{ user_name }} has **accepted** your swap {{ type_friendly }} on **{{ date_formatted }}**
+
+--
+{{ settings.EMAIL_SIGNATURE }}

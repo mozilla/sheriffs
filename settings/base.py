@@ -5,7 +5,7 @@ import os
 from django.utils.functional import lazy
 
 # Make file paths relative to settings.
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 path = lambda *a: os.path.join(ROOT, *a)
 
 ROOT_PACKAGE = os.path.basename(ROOT)
@@ -18,6 +18,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ()
 MANAGERS = ADMINS
+SEND_EMAIL_FROM = 'Mozilla Sheriff Duty <sheriff@mozilla.com>'
 
 DATABASES = {}  # See settings_local.
 
@@ -38,11 +39,11 @@ TIME_ZONE = 'America/Los_Angeles'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = True
+USE_L10N = False
 
 # Gettext text domain
 TEXT_DOMAIN = 'messages'
@@ -90,7 +91,7 @@ def lazy_langs():
                  for lang in langs])
 
 # Where to store product details etc.
-PROD_DETAILS_DIR = path('lib/product_details_json')
+## Commented out temporarily PROD_DETAILS_DIR = path('lib/product_details_json')
 
 LANGUAGES = lazy(lazy_langs, dict)()
 
@@ -130,10 +131,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.request',
     'django.core.context_processors.csrf',
+    #'session_csrf.context_processor',
+
     'django.contrib.messages.context_processors.messages',
 
     'commons.context_processors.i18n',
-    #'jingo_minify.helpers.build_ids',
+    'jingo_minify.helpers.build_ids',
+    'cal.context_processors.formatters',
+    'cal.context_processors.active_tab',
 )
 
 TEMPLATE_DIRS = (
@@ -144,8 +149,12 @@ def JINJA_CONFIG():
     import jinja2
     from django.conf import settings
 #    from caching.base import cache
-    config = {'extensions': ['tower.template.i18n', 'jinja2.ext.do',
-                             'jinja2.ext.with_', 'jinja2.ext.loopcontrols'],
+    config = {'extensions': [# XXX: needed even though we don't do I18N :(
+                             'tower.template.i18n',
+
+                             'jinja2.ext.do',
+                             'jinja2.ext.with_',
+                             'jinja2.ext.loopcontrols'],
               'finalize': lambda x: x if x is not None else ''}
 #    if 'memcached' in cache.scheme and not settings.DEBUG:
         # We're passing the _cache object directly to jinja because
@@ -162,13 +171,33 @@ def JINJA_CONFIG():
 # and js files that can be bundled together by the minify app.
 MINIFY_BUNDLES = {
     'css': {
-        'example_css': (
-            'css/examples/main.css',
+        'common_css': (
+            'css/common.css',
+            'css/notifications.css',
+            'css/cal/cal.css',
+        ),
+        'roster.index': (
+          'css/roster/index.css',
+        ),
+        'jquery_ui.datepicker': (
+            'css/jquery_ui/pepper-grinder/jquery-ui-1.8.14.datepicker.css',
         ),
     },
     'js': {
-        'example_js': (
-            'js/libs/jquery-1.4.4.min.js',
+        'core': (
+            'js/libs/jquery-1.6.2.min.js',
+            'js/notifications.js',
+            'js/calendar.js'
+        ),
+        'roster.initialize': (
+            'js/roster/initialize.js',
+        ),
+        'roster.insert': (
+            'js/roster/insert.js',
+        ),
+        'jquery_ui.datepicker': (
+            'js/libs/jquery-ui-1.8.14.datepicker.min.js',
+            'js/form-datepickers.js',
         ),
     }
 }
@@ -177,15 +206,19 @@ MINIFY_BUNDLES = {
 ## Middlewares, apps, URL configs.
 
 MIDDLEWARE_CLASSES = (
-    'commons.middleware.LocaleURLMiddleware',
+    #'commons.middleware.LocaleURLMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 
+    #'session_csrf.CsrfMiddleware',
     'commonware.middleware.FrameOptionsHeader',
+    'commonware.middleware.HidePasswordOnException',
 )
+
+AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 ROOT_URLCONF = '%s.urls' % ROOT_PACKAGE
 
@@ -195,14 +228,12 @@ INSTALLED_APPS = (
     'jingo_minify',
     'tower',  # for ./manage.py extract (L10n)
 
-    'examples',  # Example code. Can (and should) be removed for actual projects.
-
     # We need this so the jsi18n view will pick up our locale directory.
     ROOT_PACKAGE,
 
     # Third-party apps
     'commonware.response.cookies',
-    'djcelery',
+    #'djcelery',
     'django_nose',
 
     # Django contrib apps
@@ -210,16 +241,24 @@ INSTALLED_APPS = (
     'django_sha2',  # Load after auth to monkey-patch it.
 
     'django.contrib.contenttypes',
-    # 'django.contrib.sessions',
+    'django.contrib.sessions',
     # 'django.contrib.sites',
     # 'django.contrib.messages',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
     # L10n
     'product_details',
+
+    # sheriffs specific
+    'users',
+    'cal',
+    'roster',
+
+    # vendor-local
+    'uuidfield',
 
 )
 
@@ -247,6 +286,12 @@ DOMAIN_METHODS = {
     #],
 }
 
+
+AUTHENTICATION_BACKENDS = (
+   'users.email_auth_backend.EmailOrUsernameModelBackend',
+   'django.contrib.auth.backends.ModelBackend'
+)
+
 # Path to Java. Used for compress_assets.
 JAVA_BIN = '/usr/bin/java'
 
@@ -268,3 +313,14 @@ BROKER_VHOST = 'playdoh'
 BROKER_CONNECTION_TIMEOUT = 0.1
 CELERY_RESULT_BACKEND = 'amqp'
 CELERY_IGNORE_RESULT = True
+
+LOGIN_URL = '/users/login/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
+DEFAULT_DATE_FORMAT = '%A, %B %d, %Y'
+EMAIL_SIGNATURE = """Mozilla Sheriff Duty
+https://sheriffs.mozilla.com
+"""
+
+MAILINGLIST_EMAIL = 'sheriffs@mozilla.com'

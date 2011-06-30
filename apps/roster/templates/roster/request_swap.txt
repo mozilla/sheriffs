@@ -1,0 +1,13 @@
+Hi all Sheriffs,
+
+*{{ user_name }}* would like someone to take the *{{ date_formatted }}* Sheriff duty slot.
+{% if comment %}
+Comment:
+{{ comment|safe }}
+{% endif %}
+
+To *accept*, click on this link:
+{{ accept_url }}
+
+--
+{{ settings.EMAIL_SIGNATURE }}
