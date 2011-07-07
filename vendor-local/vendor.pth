@@ -1,1 +1,5 @@
 src/django-uuidfield
+src/python-nose
+src/django-tastypie
+src/python-dateutil
+src/python-digest

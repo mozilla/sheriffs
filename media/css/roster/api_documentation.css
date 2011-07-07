@@ -1,0 +1,31 @@
+section {
+    margin-bottom:50px;
+}
+section ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin:20px;
+    }
+    section ul li {
+        margin-bottom:20px;
+    }
+p.uri {
+    padding:10px 15px; background-color:#333;
+    -moz-border-radius: .5em;
+    -webkit-border-radius: .5em;
+    }
+    p.uri {
+        color: #eee;
+        font: 1.5em "Courier 10 Pitch",Courier,monospace;
+    }
+p.examples {
+    margin-bottom:10px;
+}
+section p.notes {
+    margin-top: 15px;
+}
+
+section pre {
+    font: 0.8em "Courier 10 Pitch",Courier,monospace;
+
+}

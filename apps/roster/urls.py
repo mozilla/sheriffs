@@ -12,5 +12,8 @@ urlpatterns = patterns('',
     # TO BE url(r'^swap/request/$', views.offer_request, name='roster.offer_request'),
     url(r'^(?P<uuid>\w{32})/accept/$', views.accept_swap, name='roster.accept_swap'),
     url(r'^(?P<uuid>\w{32})/decline/$', views.decline_swap, name='roster.decline_swap'),
-    url(r'', views.index, name='roster.index'),
+
+    url(r'^api/documentation/$', views.api_documentation, name='roster.api_documentation'),
+    url(r'^widget/$', views.widget_factory, name='roster.widget_factory'),
+    url(r'^$', views.index, name='roster.index'),
 )

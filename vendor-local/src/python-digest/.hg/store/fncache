@@ -1,0 +1,11 @@
+data/setup.py.i
+data/python_digest/utils.py.i
+data/AUTHORS.i
+data/python_digest/__init__.py.i
+data/buildout.cfg.i
+data/bootstrap.py.i
+data/README.i
+data/.hgignore.i
+data/LICENSE.i
+data/python_digest/http.py.i
+data/python_digest/tests.py.i

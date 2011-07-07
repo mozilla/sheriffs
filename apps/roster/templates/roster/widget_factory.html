@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block extra_site_css %}
+{#{{ css('roster.api_documentation') }} #}
+{% endblock %}
+
+
+{% block content %}
+<h1>Widget Factory</h1>
+
+
+<form action=".">
+<p>Le code...</p>
+<textarea name="code" style="width:100%" rows="{{ count_default_code_lines }}">{{ default_code }}</textarea>
+</form>
+
+
+<p>You can copy-and-paste this code into any website. It will try to load
+the widget and its data last so it doesn't hinder the basic rendering of
+the page first.</p>
+
+{% endblock %}

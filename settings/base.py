@@ -179,6 +179,9 @@ MINIFY_BUNDLES = {
         'roster.index': (
           'css/roster/index.css',
         ),
+        'roster.api_documentation': (
+          'css/roster/api_documentation.css',
+        ),
         'jquery_ui.datepicker': (
             'css/jquery_ui/pepper-grinder/jquery-ui-1.8.14.datepicker.css',
         ),
@@ -296,9 +299,9 @@ AUTHENTICATION_BACKENDS = (
 JAVA_BIN = '/usr/bin/java'
 
 ## Auth
-PWD_ALGORITHM = 'sha512'  # recommended: 'bcrypt'
+PWD_ALGORITHM = 'bcrypt'
 HMAC_KEYS = {  # for bcrypt only
-    #'2011-01-01': 'cheesecake',
+    '2011-07-08': 'foobaring',
 }
 
 ## Tests

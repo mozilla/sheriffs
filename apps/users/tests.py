@@ -78,6 +78,27 @@ class UsersTest(TestCase):
         path = urlparse(response['location']).path
         eq_(path, '/foo/bar')
 
+    def test_login_failure(self):
+        url = reverse('users.login')
+        mortal = User.objects.create(
+          username='mortal',
+          first_name='Mortal',
+          last_name='Joe',
+          email='mortal@mozilla.com',
+        )
+        mortal.set_password('secret')
+        mortal.save()
+
+        response = self.client.post(url, {'username': 'mortal',
+                                          'password': 'xxx'})
+        eq_(response.status_code, 200)
+        ok_('errorlist' in response.content)
+
+        response = self.client.post(url, {'username': 'xxx',
+                                          'password': 'secret'})
+        eq_(response.status_code, 200)
+        ok_('errorlist' in response.content)
+
 
     def test_login_rememberme(self):
         url = reverse('users.login')

@@ -58,7 +58,7 @@ html {
 #content h3 { font-size: 1.2em; }
 #content h1,
 #content h2,
-#content h3 { font-weight:bold; margin-bottom:15px; }
+#content h3 { font-weight:bold; margin-bottom:10px; margin-top:30px; }
 a {
 	color: #327ABA;
 	}
@@ -139,3 +139,4 @@ a:hover {
 
 .ui-datepicker td,
 .ui-datepicker span { font-size: 0.8em; }
+code { font-family: "Courier 10 Pitch",Courier,monospace }

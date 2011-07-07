@@ -115,7 +115,8 @@ def replace(request):
 
 @transaction.commit_on_success
 @staff_required
-def insert(request):
+def insert(request): # pragma: no cover
+    # experimental method
     data = {}
     in_slots = set()
     for slot in Slot.objects.all():
@@ -199,7 +200,6 @@ def index(request):
         # go to today's page
         count_past = Slot.objects.filter(date__lt=today).count()
         default_page = 1 + count_past / SLOTS_PER_PAGE
-        print default_page
 
     try:
         page = int(request.GET.get('page', default_page))
@@ -452,3 +452,75 @@ def replace_slot(request, pk):
     data['form'] = form
     data['slot'] = slot
     return jingo.render(request, 'roster/replace_slot.html', data)
+
+
+from api import SlotResource
+
+def api_documentation(request):
+    data = {}
+    base_url = '%s://%s' % (request.is_secure() and 'https' or 'http',
+                            RequestSite(request).domain)
+    base_path = '/api/%s' % SlotResource.Meta.api_name
+    try:
+        random_slot_id = SlotResource.Meta.queryset.order_by('?')[0].pk
+    except IndexError:
+        random_slot_id = 0
+    data['slot_resource_meta'] = SlotResource.Meta
+    data['base_url'] = base_url
+    data['base_path'] = base_path
+    data['api_base_url'] = '%s%s/' % (base_url, base_path)
+    data['random_slot_id'] = random_slot_id
+    data['slot_base_url'] = ('%s%s/%s/' %
+      (base_url, base_path, SlotResource.Meta.resource_name))
+    return jingo.render(request, 'roster/api_documentation.html', data)
+
+
+
+@staff_required
+def widget_factory(request): # pragma: no cover
+    data = {}
+
+    this_domain = RequestSite(request).domain
+    default_options = [
+      ('use_date_labels', False,
+       'whether to say "Today" or "Thursday" instead of the full date'),
+      ('limit', 5, 'number of items to display'),
+      ('root_css', '',
+       'possible extra CSS added to the root widget element (e.g. border:1px '\
+       'solid green)'),
+      ('host_name', this_domain,
+       'this default host name (unlikely to change)'),
+      ('root_node_id', 'sheriffs_widget',
+       'the ID name of the widget in the DOM tree (unlikely to change)'),
+    ]
+    default_options_javascript = []
+    for key, value, comment in default_options:
+        if isinstance(value, bool):
+            value = str(value).lower() # to javascript
+        elif isinstance(value, basestring):
+            value = "'%s'" % value
+        default_options_javascript.append("%s: %s // %s" %
+          (key, value, comment)
+        )
+    default_options_javascript = ',\n'.join(
+      '  ' + x for x in default_options_javascript)
+
+    default_code = """
+<script>
+// all the default options (feel free to delete what you don't change)
+var sheriff_options = {
+%(default_options_javascript)s
+};
+</script>
+<script src="%(widget_src_url)s"></script>
+    """.strip()
+
+    widget_src_url = '//%s' % this_domain
+    widget_src_url += '/media/js/widget.js'
+    data['default_code'] = default_code % {
+      'widget_src_url': widget_src_url,
+      'default_options_javascript': default_options_javascript,
+    }
+    data['count_default_code_lines'] = len(data['default_code'].splitlines())
+    data['default_options'] = default_options
+    return jingo.render(request, 'roster/widget_factory.html', data)

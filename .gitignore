@@ -18,3 +18,4 @@ tmp/*
 settings/local*.py
 run_sheriffs_*.sh
 cover/
+dump.rdb

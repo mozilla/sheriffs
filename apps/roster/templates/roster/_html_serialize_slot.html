@@ -1,0 +1,18 @@
+{% comment %}
+Note: this is a Django template (not jinja2) because there is no request.
+And also, there is no context processors available.
+{% endcomment %}
+
+{% if total_count %}
+<table>
+  {% for item in items %}
+  <tr>
+    <td>{{ item.date_formatted }}</td>
+    <td>{{ item.date_label }}</td>
+    <td>{{ item.user_name }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>Nothing :(</p>
+{% endif %}

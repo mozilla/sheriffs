@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block extra_site_css %}
+{{ css('roster.api_documentation') }}
+{% endblock %}
+
+
+{% block content %}
+<h1>API Documentation</h1>
+
+<section>
+<h2>General notes</h2>
+<ul>
+  <li>There is no authentication but also no actions available to change data</li>
+  <li>The default format is <code>JSON</code> but if you don't specify <code>?format=json</code>
+  and try one of these URLs in a browser it will default to the <code>HTML</code> format.</li>
+</ul>
+</section>
+
+<section>
+  <h2>Getting a list of slots</h2>
+  <p class="uri">{{ slot_base_url }}</p>
+  <p class="examples">
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ slot_base_url }}?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="notes">
+  The expected outcome is something like this:</p>
+<pre>
+{"meta": {"limit": 10,
+           "next": "/api/v1/slot/?offset=10&amp;limit=10&amp;format=json",
+           "offset": 0,
+           "previous": null,
+           "total_count": 39},
+ "objects": [{"date": "Thursday, July 07, 2011",
+               "date_iso": "2011-07-07",
+               "email": "ashleynoval@gmail.com",
+               "id": 32,
+               "resource_uri": "/api/v1/slot/32/",
+               "swap_needed": false,
+               "user": "Ashley  (ashley)'},
+              {"date": "Friday, July 08, 2011",
+               "date_iso": "2011-07-08",
+               "email": "peterbe@mozilla.com",
+               "id": 33,
+               "resource_uri": "/api/v1/slot/33/",
+               "swap_needed": false,
+               "user": "Peter  (peterbe)'},
+               ...
+</pre>
+  <p class="notes">
+  If you append <code>?limit=5</code> to the URL it will obviously limit it to the next 5 slots.
+  </p>
+
+</section>
+
+<section>
+  <h2>Getting an individual slot</h2>
+  <p class="uri">{{ slot_base_url }}:id/</p>
+  <p class="examples">
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ slot_base_url }}{{ random_slot_id }}/?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="notes">
+  The expected outcome is something like this:</p>
+<pre>
+{"date": "Thursday, July 14, 2011",
+ "date_iso": "2011-07-14",
+ "email": "greger@gmail.com",
+ "id": 39,
+ "resource_uri": "/api/v1/slot/39/",
+ "swap_needed": false,
+ "user": "Greger Bengtsson (greger)"}
+</pre>
+</section>
+
+<section>
+  <h2>Special entry points</h2>
+  <p class="uri">{{ api_base_url }}today/</p>
+  <p class="examples">
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ api_base_url }}today/?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="uri">{{ api_base_url }}tomorrow/</p>
+  <p>
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ api_base_url }}tomorrow/?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="notes">
+  The expected outcome is something like this:</p>
+<pre>
+{"meta": {"limit": 20,
+           "next": null,
+           "offset": 0,
+           "previous": null,
+           "total_count": 1},
+ "objects": [{"date": "Saturday, July 09, 2011",
+               "date_iso": "2011-07-09",
+               "email": "thua@mozilla.com",
+               "id": 34,
+               "resource_uri": "/api/v1/tomorrow/34/",
+               "swap_needed": false,
+               "user": "Thua Jonasson (thua)'}]}
+</pre>
+  <p class="notes">
+  Note how it returns a list of slots. Even though it's highly likely,
+  it's not a guarantee that there will be only one slot on a specific date.
+  </p>
+</section>
+
+{% endblock %}

@@ -18,6 +18,23 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 )
 
+from tastypie.api import Api
+from roster.api import SlotResource, TodayResource, TomorrowResource
+from django.http import HttpResponseRedirect
+from django.views.generic.simple import redirect_to
+
+v1_api = Api(api_name='v1')
+v1_api.register(SlotResource())
+v1_api.register(TodayResource())
+v1_api.register(TomorrowResource())
+
+urlpatterns += patterns('',
+    (r'^api/', include(v1_api.urls)),
+#    (r'^api/', lambda x: HttpResponseRedirect('/roster/api/documentation/')),
+    (r'^api/', redirect_to, {'url': '/roster/api/documentation/'}),
+)
+
+
 handler404 = 'cal.views.handler404'
 
 ## In DEBUG mode, serve media files through Django.
