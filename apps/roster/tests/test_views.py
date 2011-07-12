@@ -50,11 +50,11 @@ class RosterTest(TestCase):
 
         data = {
           # starting on the Thursday
-          'starting': today.strftime('%Y-%m-%d'),
+          'starting': today.strftime(settings.DEFAULT_DATE_FORMAT),
           # repeat for 1 week plus 1 day
           # so end on the next Friday
           'until': ((today + datetime.timedelta(days=7 + 1))
-                           .strftime('%Y-%m-%d')),
+                           .strftime(settings.DEFAULT_DATE_FORMAT)),
           'usernames': ''
         }
         response = self.client.post(url, data)
@@ -265,6 +265,7 @@ class RosterTest(TestCase):
         slot = Slot.objects.create(
           user=admin,
           date=today,
+          swap_needed=True,
         )
         eq_(slot.user, admin)
 
@@ -326,6 +327,8 @@ class RosterTest(TestCase):
         eq_(response.status_code, 302)
         swap = Swap.objects.get(uuid=uuid)
         eq_(swap.state, Swap.STATE_ACCEPTED)
+        slot = Slot.objects.get(pk=slot.pk)
+        ok_(not slot.swap_needed)
 
         assert 2 == len(mail.outbox)
         email = mail.outbox[-1]
@@ -642,8 +645,9 @@ class RosterTest(TestCase):
 
         data = {'from_username': tom.username,
                 'to_username': dick.username,
-                'starting': tomorrow,
-                'until': tomorrow + tdelta(days=1)
+                'starting': tomorrow.strftime(settings.DEFAULT_DATE_FORMAT),
+                'until': (tomorrow + tdelta(days=1))\
+                  .strftime(settings.DEFAULT_DATE_FORMAT)
                 }
         response = self.client.post(url, data)
         eq_(response.status_code, 302)

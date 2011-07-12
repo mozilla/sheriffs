@@ -1,0 +1,45 @@
+<form class="nav" action=".#calendar">
+<div style="display:none">
+{% if cal_m %}
+<input type="hidden" name="cal_m" value="{{ cal_m }}">
+{% endif %}
+{% if cal_d %}
+<input type="hidden" name="cal_d" value="{{ cal_d }}">
+{% endif %}
+{% if cal_y %}
+<input type="hidden" name="cal_y" value="{{ cal_y }}">
+{% endif %}
+</div>
+<ul>
+        {#
+	<li class="subscribe">
+		Subscribe to:
+		<select name="calendar_type">
+			<option>- Select a Calendar -</option>
+			<option {% if current_calendar_type == 'all' %}selected{% endif %}
+                                >All Sheriff Rotations</option>
+			<option {% if current_calendar_type == 'me' %}selected{% endif %}
+                               >When I'm on Duty</option>
+			<option {% if current_calendar_type == 'all' %}selected{% endif %}
+                               >Requests for Swaps</option>
+			</select>
+	</li>
+        #}
+        <li><button name="cal_m_diff" value="-1">&laquo; Month</button></li>
+	<li><button name="cal_w" value="{% if cal_w %}{{ cal_w - 1 }}{% else %}-1{% endif %}">&laquo; Week</button></li>
+	<li>
+		<select name="cal_month">
+			<option value="">- Jump to Month -</option>
+                        {% for option in month_options %}
+			<option value="{{ option.value }}"
+                          {% if option.current %} class="current"{% endif %}
+                          >{{ option.label }}{% if option.today_month %} &bull;{% endif %}</option>
+                        {% endfor %}
+		</select>
+		<button name="cal_today" value="1">Today</button>
+		</li>
+	<li><button name="cal_w" value="{% if cal_w %}{{ cal_w + 1 }}{% else %}1{% endif %}">Week &raquo;</button></li>
+	<li><button name="cal_m_diff" value="1"
+             >Month &raquo;</button></li>
+</ul>
+</form>

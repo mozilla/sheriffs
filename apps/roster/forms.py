@@ -18,6 +18,7 @@ class BaseForm(forms.Form):
                 else:
                     klass = 'date'
                 self.fields[field].widget.attrs['class'] = klass
+                self.fields[field].input_formats = [settings.DEFAULT_DATE_FORMAT]
                 self.fields[field].widget.format = settings.DEFAULT_DATE_FORMAT
 
 class InitializeRosterForm(BaseForm):

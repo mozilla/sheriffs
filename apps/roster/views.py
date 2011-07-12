@@ -361,6 +361,7 @@ def accept_swap(request, uuid):
     swap.save()
 
     swap.slot.user = swap.user
+    swap.slot.swap_needed = False
     swap.slot.save()
     user_name = get_user_name(swap.slot.user)
     swap_user_name = get_user_name(swap.user)

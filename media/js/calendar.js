@@ -51,6 +51,10 @@ function _notifications() {
 $(document).ready( function() {
   _notifications();
 
+  $('select[name="cal_month"]').change(function() {
+    $(this).parents('form').submit();
+  });
+
 	$([
 		{ rel: 'swap-offer', box: 'swapoffer-lightbox'  },
 		{ rel: 'swap-req', box: 'swapreq-lightbox'  },
@@ -61,8 +65,7 @@ $(document).ready( function() {
 		var selectLinks = 'a[rel='+i.rel+']';
 
 		$(selectLinks).click( function() {
-      var id = $(this).attr('id');
-      var pk = id.split('-')[1];
+      var pk = $(this).data('pk');
 			var onEscape = function (e) {
 				if (e.keyCode == 27) {
 					return doHide();
