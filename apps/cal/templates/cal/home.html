@@ -19,11 +19,11 @@
                                 {% if 'past' not in duty['remarks'] %}
 				<span>
                                   {% if 'self' in duty['remarks'] %}
-					<a rel="swap-req" data-pk="{{ duty['pk'] }}" href="#"
+					<a class="swap-req" data-pk="{{ duty['pk'] }}" href="#"
                                            title="Request a swap on {{ format_date(duty['date']) }}"
                                            >Request a Swap</a>
                                   {% else %}
-					<a rel="swap-offer" data-pk="{{ duty['pk'] }}" href="#"
+					<a class="swap-offer" data-pk="{{ duty['pk'] }}" href="#"
                                            title="Offer to swap on {{ format_date(duty['date']) }}"
                                         >Offer to swap</a>
                                   {% endif %}
@@ -43,7 +43,7 @@
 				<a class="date" href="">{{ duty['date'].strftime(date_format) }}</a>
                                 {% if 'last' not in duty['remarks'] %}
 				<span>
-					<a rel="swap-req" data-pk="{{ duty['pk'] }}" href="#"
+					<a class="swap-req" data-pk="{{ duty['pk'] }}" href="#"
                                         title="Request a swap on {{ format_date(duty['date']) }}">Request a Swap</a>
 
 				</span>
@@ -113,11 +113,11 @@
                        {% endif %}
                          {% if 'past' not in day.remarks %}
                            {% if slot.user == request.user %}
-                           <p class="command"><a rel="swap-req" href="#"
+                           <p class="command"><a class="swap-req" href="#"
                            title="Request a swap on {{ format_date(slot.date) }}"
                            data-pk="{{ slot.pk }}">Request to Swap</a><p>
                            {% else %}
-                           <p class="command"><a rel="swap-offer" href="#"
+                           <p class="command"><a class="swap-offer" href="#"
                            title="Offer to swap on {{ format_date(slot.date) }}"
                            data-pk="{{ slot.pk }}">Offer to Swap</a><p>
                            {% endif %}
@@ -136,9 +136,12 @@
 
 </div>
 
+{% endblock %}
 
+{% block outside_body_div %}
 <div id="swapreq-lightbox" class="lightbox">
 	<form method="post" action="{{ url('roster.request_swap') }}">{{ csrf() }}
+        <div>
 		<h2>Request a Swap of Sheriff Duty</h2>
 
 		<p>You are asking for another sheriff to assume duty on:</p>

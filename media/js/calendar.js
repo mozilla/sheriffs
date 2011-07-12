@@ -56,13 +56,13 @@ $(document).ready( function() {
   });
 
 	$([
-		{ rel: 'swap-offer', box: 'swapoffer-lightbox'  },
-		{ rel: 'swap-req', box: 'swapreq-lightbox'  },
-		{ rel: 'volunteer', box: 'volunteer-lightbox'  },
-		{ rel: 'back-out', box: 'backout-lightbox'  },
+		{ klass: 'swap-offer', box: 'swapoffer-lightbox'  },
+		{ klass: 'swap-req', box: 'swapreq-lightbox'  },
+		{ klass: 'volunteer', box: 'volunteer-lightbox'  },
+		{ klass: 'back-out', box: 'backout-lightbox'  },
 	]).each(function (_, i) {
-		var selectBox = '#'+i.box;
-		var selectLinks = 'a[rel='+i.rel+']';
+		var selectBox = '#' + i.box;
+    var selectLinks = 'a.' + i.klass;
 
 		$(selectLinks).click( function() {
       var pk = $(this).data('pk');
