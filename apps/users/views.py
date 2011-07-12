@@ -2,7 +2,6 @@ import logging
 from django import http
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
 import django.contrib.auth.views
 from django.conf import settings
 import jingo
@@ -38,6 +37,7 @@ def login(request):
                                         '"remember me" set') % user)
 
     return r
+
 
 def logout(request):
     django.contrib.auth.views.render_to_response = django_render_to_response

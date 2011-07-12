@@ -19,7 +19,9 @@ var Sheriffs = (function() {
     document.getElementsByTagName('head')[0].appendChild(style);
   }
   function requestContent() {
-    var s = document.createElement('script'); s.type = 'text/javascript'; s.defer = true;
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.defer = true;
     s.src = CONTENT_URL;
     document.getElementsByTagName('head')[0].appendChild(s);
   }
@@ -59,9 +61,9 @@ var Sheriffs = (function() {
        foot.setAttribute('class', 'foot');
        foot.setAttribute('href', BASE_URL);
        foot.setAttribute('title', 'Widget version ' + Sheriffs_Widget_Version);
-       foot.appendChild(document.createTextNode('Mozilla Sheriffs Duty'))
+       foot.appendChild(document.createTextNode('Mozilla Sheriffs Duty'));
        div.appendChild(foot);
        div.style.display = 'block';
      }
-  }
+  };
 })();

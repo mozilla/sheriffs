@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from forms import AuthenticationForm
 import views
 
 urlpatterns = patterns('',

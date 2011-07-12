@@ -18,13 +18,16 @@ class BaseForm(forms.Form):
                 else:
                     klass = 'date'
                 self.fields[field].widget.attrs['class'] = klass
-                self.fields[field].input_formats = [settings.DEFAULT_DATE_FORMAT]
+                self.fields[field].input_formats = \
+                  [settings.DEFAULT_DATE_FORMAT]
                 self.fields[field].widget.format = settings.DEFAULT_DATE_FORMAT
+
 
 class InitializeRosterForm(BaseForm):
     starting = forms.fields.DateField()
     until = forms.fields.DateField()
     usernames = forms.fields.CharField(widget=forms.widgets.Textarea())
+
 
 class InsertRosterForm(BaseForm):
     starting = forms.fields.DateField()
@@ -37,6 +40,7 @@ class InsertRosterForm(BaseForm):
         except User.DoesNotExist:
             raise forms.ValidationError("Unrecognized user")
         return value
+
 
 class ReplaceRosterForm(BaseForm):
     from_username = forms.fields.ChoiceField()

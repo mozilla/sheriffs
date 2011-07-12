@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from nose.tools import eq_, ok_
 
+
 class UsersTest(TestCase):
 
     def test_login(self):
@@ -49,7 +50,7 @@ class UsersTest(TestCase):
         ok_('Mortal' not in response.content)
 
     def _get_all_inputs(self, html):
-        _input_regex = re.compile('<input (.*?)>', re.M|re.DOTALL)
+        _input_regex = re.compile('<input (.*?)>', re.M | re.DOTALL)
         _attrs_regex = re.compile('(\w+)="([^"]+)"')
         all_attrs = {}
         for input in _input_regex.findall(html):
@@ -59,7 +60,7 @@ class UsersTest(TestCase):
 
     def test_login_next_redirect(self):
         url = reverse('users.login')
-        response = self.client.get(url, {'next':'/foo/bar'})
+        response = self.client.get(url, {'next': '/foo/bar'})
         eq_(response.status_code, 200)
         attrs = self._get_all_inputs(response.content)
         ok_(attrs[REDIRECT_FIELD_NAME])
@@ -99,7 +100,6 @@ class UsersTest(TestCase):
         eq_(response.status_code, 200)
         ok_('errorlist' in response.content)
 
-
     def test_login_rememberme(self):
         url = reverse('users.login')
         mortal = User.objects.create(
@@ -120,7 +120,6 @@ class UsersTest(TestCase):
         today = datetime.datetime.today()
         days = settings.SESSION_COOKIE_AGE / 24 / 3600
         eq_((then - today).days + 1, days)
-
 
     def test_login_by_email(self):
         url = reverse('users.login')

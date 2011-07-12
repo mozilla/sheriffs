@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from roster.models import Slot
 from nose.tools import eq_, ok_
 
+
 class CalTest(TestCase):
 
     def test_render_home_page(self):
@@ -82,7 +83,6 @@ class CalTest(TestCase):
         eq_(urlparse(response['location']).path, url)
         eq_(urlparse(response['location']).query, 'cal_y=2011&cal_m=11')
 
-
     def test_get_calendar_data_basic(self):
         from cal.views import _get_calendar_data
         weeks = _get_calendar_data(None, None, None, AnonymousUser(),
@@ -108,7 +108,7 @@ class CalTest(TestCase):
         )
         slot = Slot.objects.create(
           user=peter,
-          date=datetime.date(2011, 7, 8) # a friday
+          date=datetime.date(2011, 7, 8)  # a friday
         )
 
         from cal.views import _get_calendar_data
@@ -121,7 +121,6 @@ class CalTest(TestCase):
         friday = week1.days[5]
         ok_(slot in friday.slots)
         ok_('self' in friday.remarks)
-
 
     def test_get_day_dates(self):
         from cal.views import _get_day_dates

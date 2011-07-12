@@ -1,7 +1,6 @@
 import re
 from urlparse import urlparse
 import datetime
-from urllib import quote as url_quote
 from django.test import TestCase
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -12,6 +11,7 @@ from roster.models import Slot, Swap
 from nose.tools import eq_, ok_
 from roster.views import get_next_starting_date
 from utils import get_user_name
+
 
 class RosterTest(TestCase):
 
@@ -84,8 +84,8 @@ class RosterTest(TestCase):
         eq_(response.status_code, 302)
         eq_(urlparse(response['location']).path, reverse('roster.index'))
 
-        # Almost paradoxically, we expect to create 7 slots even though we start
-        # on a Thursday and loop until the Friday *next* week.
+        # Almost paradoxically, we expect to create 7 slots even though we
+        # start on a Thursday and loop until the Friday *next* week.
         # 1) Thursday
         # 2) Friday
         # 3) Monday
@@ -122,7 +122,6 @@ class RosterTest(TestCase):
         slot = Slot.objects.all().order_by('date')[6]
         eq_(slot.user.username, 'dick')
         eq_(slot.date, today + datetime.timedelta(days=6 + 2))
-
 
     def test_initialize_roster_again(self):
         # the second time it should default to the order of the usernames
@@ -164,13 +163,11 @@ class RosterTest(TestCase):
         url = reverse('roster.initialize')
         response = self.client.get(url)
         eq_(response.status_code, 200)
-        regex = re.compile('<textarea.*>(.*?)</textarea>', re.DOTALL|re.M)
+        regex = re.compile('<textarea.*>(.*?)</textarea>', re.DOTALL | re.M)
         names = regex.findall(response.content)[0]
         names = names.splitlines()
         eq_(names, ['tom', 'dick', 'harry'])
-        regex = re.compile(
-          '<input .*?>',
-          re.DOTALL|re.M)
+        regex = re.compile('<input .*?>', re.DOTALL | re.M)
         date_inputs = {}
         for each in regex.findall(response.content):
             try:
@@ -190,16 +187,15 @@ class RosterTest(TestCase):
         eq_(until.strftime('%Y%m%d'),
             (next_friday + datetime.timedelta(days=1 + 3)).strftime('%Y%m%d'))
 
-
     def test_info_json(self):
         url = reverse('roster.info_json')
         response = self.client.get(url)
         eq_(response.status_code, 404)
 
-        response = self.client.get(url, {'pk':''})
+        response = self.client.get(url, {'pk': ''})
         eq_(response.status_code, 404)
 
-        response = self.client.get(url, {'pk':999})
+        response = self.client.get(url, {'pk': 999})
         eq_(response.status_code, 404)
 
         admin = User.objects.create_user(
@@ -347,7 +343,6 @@ class RosterTest(TestCase):
         slot = Slot.objects.get(pk=slot.pk)
         eq_(slot.user, peter)
 
-
     def test_decline_offer_swap(self):
         admin = User.objects.create_user(
           'admin',
@@ -410,7 +405,7 @@ class RosterTest(TestCase):
         ok_('too late' in response.content.lower())
 
     def test_request_swap(self):
-        peter= User.objects.create_user(
+        peter = User.objects.create_user(
           'peter',
           'peter@mozilla.com',
           password='secret',
@@ -431,7 +426,7 @@ class RosterTest(TestCase):
             settings.LOGIN_URL)
 
         assert self.client.login(username='peter', password='secret')
-        data = {'comment':'Please please!'}
+        data = {'comment': 'Please please!'}
         response = self.client.post(url, data)
         eq_(response.status_code, 404)
         response = self.client.post(url, dict(data, pk=9999))
@@ -491,13 +486,12 @@ class RosterTest(TestCase):
         eq_(slot.user, tom)
         ok_(not slot.swap_needed)
 
-        dick = User.objects.create_user(
+        User.objects.create_user(
           'dick', 'tom@mozilla.com', password='secret'
         )
         response = self.client.get(accept_url)
         eq_(response.status_code, 200)
         ok_('already accepted' in response.content.lower())
-
 
     def test_get_next_starting_date(self):
         # when no slots are set up, just return now
@@ -533,7 +527,6 @@ class RosterTest(TestCase):
 
         r = get_next_starting_date(today=friday)
         eq_(r, wednesday)
-
 
     def test_replace_roster(self):
         url = reverse('roster.replace')
@@ -577,23 +570,23 @@ class RosterTest(TestCase):
         yesterday = today - tdelta(days=1)
         tomorrow = today + tdelta(days=1)
 
-        slot1 = Slot.objects.create(
+        Slot.objects.create(
           user=tom,
           date=yesterday,
         )
-        slot2 = Slot.objects.create(
+        Slot.objects.create(
           user=dick,
           date=today,
         )
-        slot3 = Slot.objects.create(
+        Slot.objects.create(
           user=harry,
           date=tomorrow,
         )
-        slot4 = Slot.objects.create(
+        Slot.objects.create(
           user=dick,
           date=tomorrow + tdelta(days=1),
         )
-        slot5 = Slot.objects.create(
+        Slot.objects.create(
           user=harry,
           date=tomorrow + tdelta(days=2),
         )
@@ -755,33 +748,35 @@ class RosterTest(TestCase):
           user=chris,
           date=yesterday
         )
+        fmt = lambda x: x.strftime(settings.DEFAULT_DATE_FORMAT)
         response = self.client.get(url)
         eq_(response.status_code, 200)
         ok_(get_user_name(tom) in response.content)
         for i, name in enumerate(names):
-            ok_(get_user_name(User.objects.get(username=name)) in response.content)
+            ok_(get_user_name(User.objects.get(username=name))
+                in response.content)
             date = today + datetime.timedelta(days=i)
-            ok_(date.strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
+            ok_(fmt(date) in response.content)
 
         ok_(get_user_name(chris) not in response.content)
-        ok_(yesterday.strftime(settings.DEFAULT_DATE_FORMAT) not in response.content)
+        ok_(fmt(yesterday) not in response.content)
 
         response = self.client.get(url, {'include_past': 1})
         eq_(response.status_code, 200)
         ok_(get_user_name(chris) in response.content)
-        ok_(yesterday.strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
+        ok_(fmt(yesterday) in response.content)
 
         response = self.client.get(url, {'page': 100})
         eq_(response.status_code, 200)
         for i, name in enumerate(names):
             date = today + datetime.timedelta(days=i)
-            ok_(date.strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
+            ok_(fmt(date) in response.content)
 
         response = self.client.get(url, {'page': 0})
         eq_(response.status_code, 200)
         for i, name in enumerate(names):
             date = today + datetime.timedelta(days=i)
-            ok_(date.strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
+            ok_(fmt(date) in response.content)
 
         response = self.client.get(url, {'page': 'xxx'})
         eq_(response.status_code, 404)

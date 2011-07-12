@@ -1,12 +1,12 @@
 import datetime
 from django.shortcuts import redirect
-from pprint import pprint
 from django import http
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.db.models import Max, Min
 from roster.models import Slot
 import jingo
+
 
 def handler404(request):
     data = {}
@@ -58,6 +58,7 @@ def home(request):
     on_duty_next = []
 
     today = datetime.date.today()
+
     def label(i):
         if i == -1:
             return 'Yesterday'
@@ -75,7 +76,7 @@ def home(request):
             slot = (Slot.objects
                         .select_related('user')
                       .get(date__gte=today + datetime.timedelta(days=i),
-                           date__lt=today + datetime.timedelta(days=i+1))
+                           date__lt=today + datetime.timedelta(days=i + 1))
                       )
             pk = slot.pk
             users.append(slot.user)
@@ -84,7 +85,6 @@ def home(request):
             if slot.user == request.user:
                 remarks.append('self')
         except Slot.DoesNotExist:
-            names = []
             pk = None
             if i >= 0:
                 remarks.append('offer-needed')
@@ -100,8 +100,6 @@ def home(request):
           'pk': pk,
           'date': date,
         })
-    #
-    #pprint(on_duty_next)
 
     my_duty_dates = []
     if request.user.is_authenticated():
@@ -156,6 +154,7 @@ class Dict(dict):
     def __getattr__(self, key):
         return self[key]
 
+
 def _get_month_options(year, month, week, weeks=5):
     min_date = Slot.objects.aggregate(Min('date'))['date__min']
     max_date = Slot.objects.aggregate(Max('date'))['date__max']
@@ -179,7 +178,6 @@ def _get_month_options(year, month, week, weeks=5):
     d = min_date
     months = []
     done = []
-    today = datetime.date.today()
     while d < max_date:
         if (d.month, d.year) not in done:
             done.append((d.month, d.year))
@@ -198,19 +196,16 @@ def _get_month_options(year, month, week, weeks=5):
         d += one_day
     return months
 
+
 def _get_calendar_data(year, month, week, user, sunday_first=False, weeks=5):
-    today = datetime.date.today()
-    #print (year, month, week)
     if year is None or month is None:
         date = datetime.date.today()
     else:
         date = datetime.date(year, month, 1)
     if week:
         date += datetime.timedelta(days=week * 7)
-    #print repr(date)
     no_weeks = weeks
     weeks = []
-    #_current_month = date.month
     _months = []
     _rowspans = {}
     _is_authenticated = user.is_authenticated()
@@ -243,11 +238,9 @@ def _get_calendar_data(year, month, week, user, sunday_first=False, weeks=5):
             })
             _rowspans[date.month] = 0
             _months.append(date.month)
-            #_current_month = date.month
         else:
             _rowspans[date.month] += 1
             week['month'] = None
-        #pprint(week)
         weeks.append(Dict(week))
         # if the week ended on 'noday' days, move those into a new week
 

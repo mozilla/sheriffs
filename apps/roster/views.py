@@ -19,6 +19,7 @@ import forms
 from utils.decorators import staff_required
 from utils import get_user_name
 from models import Slot, Swap
+from api import SlotResource
 
 
 @transaction.commit_on_success
@@ -32,9 +33,11 @@ def initialize(request):
             usernames = form.cleaned_data['usernames']
             starting = form.cleaned_data['starting']
             until = form.cleaned_data['until']
-            replace_existing = True #form.cleaned_data['replace_existing']
+            replace_existing = True
 
-            usernames = [x.strip() for x in usernames.splitlines() if x.strip()]
+            usernames = [x.strip() for x
+                         in usernames.splitlines()
+                         if x.strip()]
             user_objects = [User.objects.get(username=x)
                             for x in usernames]
             date = starting
@@ -67,13 +70,15 @@ def initialize(request):
                     usernames.append(slot.user.username)
             usernames.reverse()
             initial = {'starting': last_day + datetime.timedelta(days=1),
-                       'until': last_day + datetime.timedelta(days=1 + len(usernames)),
+                       'until': (last_day +
+                         datetime.timedelta(days=1 + len(usernames))),
                        'usernames': '\n'.join(usernames)}
 
         form = forms.InitializeRosterForm(initial=initial)
     data['users'] = users
     data['form'] = form
     return jingo.render(request, 'roster/initialize.html', data)
+
 
 @transaction.commit_on_success
 @staff_required
@@ -113,9 +118,10 @@ def replace(request):
     data['form'] = form
     return jingo.render(request, 'roster/replace.html', data)
 
+
 @transaction.commit_on_success
 @staff_required
-def insert(request): # pragma: no cover
+def insert(request):  # pragma: no cover
     # experimental method
     data = {}
     in_slots = set()
@@ -150,6 +156,7 @@ def insert(request): # pragma: no cover
     data['form'] = form
     data['users'] = users
     return jingo.render(request, 'roster/insert.html', data)
+
 
 def get_next_starting_date(today=None):
     """return a date that is the date after one cycle of users start today.
@@ -229,6 +236,7 @@ def info_json(request):
       'swap_needed': slot.swap_needed,
     }
     return http.HttpResponse(json.dumps(data))
+
 
 @transaction.commit_on_success
 @require_POST
@@ -332,8 +340,6 @@ def request_swap(request):
     return redirect(reverse('cal.home'))
 
 
-
-
 @transaction.commit_on_success
 def accept_swap(request, uuid):
     swap = get_object_or_404(Swap, uuid=uuid)
@@ -383,10 +389,14 @@ def accept_swap(request, uuid):
                        body,
                        from_,
                        tos)
-
-    messages.info(request, '%s slot accepted'
+    if worked:
+        messages.info(request, '%s slot accepted'
                   % swap.slot.date.strftime(settings.DEFAULT_DATE_FORMAT))
+    else:
+        messages.error(request, 'Unable to send email to %s' %
+                       ', '.join(tos))
     return redirect(reverse('cal.home'))
+
 
 @transaction.commit_on_success
 def decline_swap(request, uuid):
@@ -419,9 +429,12 @@ def decline_swap(request, uuid):
                        body,
                        from_,
                        tos)
-
-    messages.info(request, '%s slot declined'
+    if worked:
+        messages.info(request, '%s slot declined'
                   % swap.slot.date.strftime(settings.DEFAULT_DATE_FORMAT))
+    else:
+        messages.error(request, 'Unable to send email to %s' %
+                       ', '.join(tos))
     return redirect(reverse('cal.home'))
 
 
@@ -455,8 +468,6 @@ def replace_slot(request, pk):
     return jingo.render(request, 'roster/replace_slot.html', data)
 
 
-from api import SlotResource
-
 def api_documentation(request):
     data = {}
     base_url = '%s://%s' % (request.is_secure() and 'https' or 'http',
@@ -476,9 +487,8 @@ def api_documentation(request):
     return jingo.render(request, 'roster/api_documentation.html', data)
 
 
-
 @staff_required
-def widget_factory(request): # pragma: no cover
+def widget_factory(request):  # pragma: no cover
     data = {}
 
     this_domain = RequestSite(request).domain
@@ -497,7 +507,7 @@ def widget_factory(request): # pragma: no cover
     default_options_javascript = []
     for key, value, comment in default_options:
         if isinstance(value, bool):
-            value = str(value).lower() # to javascript
+            value = str(value).lower()
         elif isinstance(value, basestring):
             value = "'%s'" % value
         default_options_javascript.append("%s: %s // %s" %

@@ -1,22 +1,18 @@
 import datetime
 from django.conf import settings
-from django.contrib.auth.models import User
-from tastypie import fields
+from django.template import Context, loader
 from tastypie.resources import ModelResource
 from tastypie.serializers import Serializer
 from tastypie.bundle import Bundle
-from tastypie.exceptions import NotFound
 from models import Slot
 from utils import get_user_name
 
-from django.template import Context, loader
 
 class SlotSerializer(Serializer):
 
     def __init__(self, *args, **kwargs):
         self.use_date_labels = kwargs.pop('use_date_labels', True)
         super(SlotSerializer, self).__init__(*args, **kwargs)
-
 
     def to_html(self, data, options=None):
         # note that this method is used for single items as well as multiples
@@ -60,7 +56,8 @@ class SlotResource(ModelResource):
 
     class Meta:
         queryset = Slot.objects
-        fields = ['user', 'date', 'swap_needed', 'id', 'email', 'date_iso', 'date_label']
+        fields = ['user', 'date', 'swap_needed', 'id', 'email', 'date_iso',
+                  'date_label']
         resource_name = 'slot'
         allowed_methods = ['get']
         limit = 10
@@ -99,6 +96,7 @@ class TodayResource(SlotResource):
 
     def get_object_list(self, request):
         return Slot.objects.filter(date=datetime.date.today())
+
 
 class TomorrowResource(SlotResource):
     class Meta:

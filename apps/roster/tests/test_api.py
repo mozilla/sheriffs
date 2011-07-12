@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from nose.tools import eq_, ok_
-from roster.models import Slot, Swap
+from roster.models import Slot
 from utils import get_user_name
 
 
@@ -36,10 +36,10 @@ class APITest(TestCase):
         response = self.client.get(url)
         eq_(response.status_code, 200)
         ok_('application/json' in response['content-type'])
-        response = self.client.get(url, {'format':'json'})
+        response = self.client.get(url, {'format': 'json'})
         eq_(response.status_code, 200)
         ok_('application/json' in response['content-type'])
-        response = self.client.get(url, {'format':'html'})
+        response = self.client.get(url, {'format': 'html'})
         eq_(response.status_code, 200)
         ok_('text/html' in response['content-type'])
 
@@ -106,7 +106,7 @@ class APITest(TestCase):
         eq_(struct, second)
 
         tomorrow = today + datetime.timedelta(days=1)
-        slot3 = Slot.objects.create(
+        Slot.objects.create(
           user=tom,
           date=tomorrow + datetime.timedelta(days=1),
           swap_needed=True,
@@ -126,7 +126,7 @@ class APITest(TestCase):
 
     def test_get_slots_as_html(self):
         url = '/api/v1/slot/'
-        response = self.client.get(url, {'format':'html'})
+        response = self.client.get(url, {'format': 'html'})
         eq_(response.status_code, 200)
         ok_('text/html' in response['content-type'])
 
@@ -145,12 +145,12 @@ class APITest(TestCase):
         )
 
         today = datetime.date.today()
-        slot1 = Slot.objects.create(
+        Slot.objects.create(
           user=tom,
           date=today
         )
         tomorrow = today + datetime.timedelta(days=1)
-        slot2 = Slot.objects.create(
+        Slot.objects.create(
           user=dick,
           date=tomorrow,
           swap_needed=True,
@@ -158,14 +158,15 @@ class APITest(TestCase):
 
         response = self.client.get(url, {'format': 'html'})
         eq_(response.status_code, 200)
-        ok_(today.strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
+        ok_(today.strftime(settings.DEFAULT_DATE_FORMAT)
+            in response.content)
         ok_('Today' in response.content)
         ok_(get_user_name(tom) in response.content)
 
-        ok_(tomorrow.strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
+        ok_(tomorrow.strftime(settings.DEFAULT_DATE_FORMAT)
+            in response.content)
         ok_('Tomorrow' in response.content)
         ok_(get_user_name(dick) in response.content)
-
 
     def test_special_shortcuts(self):
         tom = User.objects.create_user(
@@ -194,7 +195,7 @@ class APITest(TestCase):
           date=today
         )
 
-        slot0 = Slot.objects.create(
+        Slot.objects.create(
           user=dick,
           date=today - datetime.timedelta(days=1)
         )
@@ -221,7 +222,7 @@ class APITest(TestCase):
         eq_(first['date'], today.strftime(settings.DEFAULT_DATE_FORMAT))
         eq_(first['email'], 'tom@mozilla.com')
 
-        response = self.client.get(url, {'format':'html'})
+        response = self.client.get(url, {'format': 'html'})
         eq_(response.status_code, 200)
         ok_(today
           .strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
@@ -237,13 +238,14 @@ class APITest(TestCase):
 
         first = struct['objects'][0]
         eq_(first['id'], slot2.pk)
-        eq_(first['date_iso'], (today + datetime.timedelta(days=1)).isoformat())
+        eq_(first['date_iso'], (today +
+          datetime.timedelta(days=1)).isoformat())
         eq_(first['user'], 'harry')
         eq_(first['date'], ((today + datetime.timedelta(days=1))
           .strftime(settings.DEFAULT_DATE_FORMAT)))
         eq_(first['email'], 'harry@mozilla.com')
 
-        response = self.client.get(url, {'format':'html'})
+        response = self.client.get(url, {'format': 'html'})
         eq_(response.status_code, 200)
         ok_((today + datetime.timedelta(days=1))
           .strftime(settings.DEFAULT_DATE_FORMAT) in response.content)
@@ -269,7 +271,8 @@ class APITest(TestCase):
         eq_(response.status_code, 200)
 
         # check all examples
-        regex = re.compile('<p.*?class="examples".*?>(.*?)</p>', re.DOTALL|re.M)
+        regex = re.compile('<p.*?class="examples".*?>(.*?)</p>',
+                           re.DOTALL | re.M)
         url_regex = re.compile('href="([^"]+)"')
         for html in regex.findall(response.content):
             for url in url_regex.findall(html):

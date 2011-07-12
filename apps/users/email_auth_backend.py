@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 
+
 class EmailOrUsernameModelBackend(object):
 
     supports_object_permissions = False
@@ -21,5 +22,5 @@ class EmailOrUsernameModelBackend(object):
     def get_user(self, user_id):
         try:
             return User.objects.get(pk=user_id)
-        except User.DoesNotExist: # pragma: no cover
+        except User.DoesNotExist:  # pragma: no cover
             return None

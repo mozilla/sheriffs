@@ -3,6 +3,7 @@ from django.db import models
 from uuidfield import UUIDField
 from django.contrib.auth.models import User
 
+
 class Slot(models.Model):
 
     user = models.ForeignKey(User)
@@ -18,7 +19,7 @@ class Slot(models.Model):
                 (self.user.username,
                  self.date.strftime('%d-%b-%Y')))
 
-    def __repr__(self): # pragma: no cover
+    def __repr__(self):  # pragma: no cover
         return ("<Slot: %r (%s)>" %
                 (self.user.username,
                  self.date.strftime('%d-%b-%Y')))
