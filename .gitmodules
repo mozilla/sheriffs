@@ -7,3 +7,6 @@
 [submodule "vendor-local/src/python-dateutil"]
 	path = vendor-local/src/python-dateutil
 	url = git://github.com/cozi/python-dateutil.git
+[submodule "vendor-local/src/django-uuidfield"]
+	path = vendor-local/src/django-uuidfield
+	url = git://github.com/dcramer/django-uuidfield.git
