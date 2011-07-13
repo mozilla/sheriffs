@@ -447,7 +447,7 @@ class RosterTest(TestCase):
         ok_('swap' in email.subject.lower())
         eq_(email.from_email, peter.email)
         ok_(slot.date.strftime(settings.DEFAULT_DATE_FORMAT) in email.body)
-        ok_(peter.first_name in email.body)
+        ok_(get_user_name(peter) in email.body)
         ok_(settings.EMAIL_SIGNATURE.strip() in email.body)
         ok_(data['comment'].strip() in email.body)
 

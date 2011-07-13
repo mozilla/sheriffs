@@ -296,8 +296,8 @@ def request_swap(request):
     if not pk:
         raise http.Http404("No 'pk'")
     slot = get_object_or_404(Slot, pk=pk)
-    user_name = get_user_name(request.user)
 
+    user_name = get_user_name(request.user)
     slot.swap_needed = True
     slot.save()
 
@@ -315,7 +315,7 @@ def request_swap(request):
 
     template = loader.get_template('roster/request_swap.txt')
     context = {
-      'your_name': user_name,
+      'user_name': user_name,
       'slot': slot,
       'settings': settings,
       'accept_url': accept_url,
