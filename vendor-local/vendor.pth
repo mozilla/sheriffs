@@ -3,3 +3,4 @@ src/python-nose
 src/django-tastypie
 src/python-dateutil
 src/python-digest
+src/django-auth-ldap
