@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # Example:
     (r'^users/', include('users.urls')),
     (r'^roster/', include('roster.urls')),
+    (r'^vcal/', include('vcal.urls')),
     (r'', include('cal.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

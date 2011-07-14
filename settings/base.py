@@ -259,6 +259,7 @@ INSTALLED_APPS = (
     'users',
     'cal',
     'roster',
+    'vcal',
 
     # vendor-local
     'uuidfield',

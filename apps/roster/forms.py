@@ -29,19 +29,6 @@ class InitializeRosterForm(BaseForm):
     usernames = forms.fields.CharField(widget=forms.widgets.Textarea())
 
 
-class InsertRosterForm(BaseForm):
-    starting = forms.fields.DateField()
-    username = forms.fields.CharField()
-
-    def clean_username(self):
-        value = self.cleaned_data['username'].strip()
-        try:
-            value = User.objects.get(username__iexact=value).username
-        except User.DoesNotExist:
-            raise forms.ValidationError("Unrecognized user")
-        return value
-
-
 class ReplaceRosterForm(BaseForm):
     from_username = forms.fields.ChoiceField()
     to_username = forms.fields.ChoiceField()

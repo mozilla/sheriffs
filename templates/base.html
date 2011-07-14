@@ -52,7 +52,7 @@
 		<a href="{{ url('users.logout') }}">Log Out</a>
                 {% else %}
                 Howdy stranger
-		<a href="{{ url('users.login') }}">Log In</a>
+		<a href="{{ url('users.login') }}{% if request.path != '/users/login/' %}?next={{ request.path }}{% endif %}">Log In</a>
                 {% endif %}
 	</div>
 </div>

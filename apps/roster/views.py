@@ -119,45 +119,6 @@ def replace(request):
     return jingo.render(request, 'roster/replace.html', data)
 
 
-@transaction.commit_on_success
-@staff_required
-def insert(request):  # pragma: no cover
-    # experimental method
-    data = {}
-    in_slots = set()
-    for slot in Slot.objects.all():
-        in_slots.add(slot.user_id)
-
-    users = (User.objects.exclude(pk__in=in_slots)
-             .order_by('first_name', 'username'))
-    if request.method == 'POST':
-        form = forms.InsertRosterForm(data=request.POST)
-        if form.is_valid():
-            date = form.cleaned_data['starting']
-            username = form.cleaned_data['username']
-            user = User.objects.get(username__iexact=username)
-            users = set()
-            insert_after_user = None
-            for slot in Slot.objects.filter(date__gte=date).order_by('date'):
-                slot.bump_date(1, skip_weekend=True)
-                Slot.objects.create(
-                  user=user,
-                  date=slot.date
-                )
-
-            raise NotImplementedError
-            user_name = get_user_name(user)
-            messages.info(request, '%s insert on %s going forward' %
-                          (user_name,
-                           date.strftime(settings.DEFAULT_DATE_FORMAT)))
-    else:
-        initial = {'starting': get_next_starting_date()}
-        form = forms.InsertRosterForm(initial=initial)
-    data['form'] = form
-    data['users'] = users
-    return jingo.render(request, 'roster/insert.html', data)
-
-
 def get_next_starting_date(today=None):
     """return a date that is the date after one cycle of users start today.
 

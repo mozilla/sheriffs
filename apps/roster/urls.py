@@ -1,9 +1,8 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, url
 import views
 
 urlpatterns = patterns('',
     url(r'^initialize/$', views.initialize, name='roster.initialize'),
-    url(r'^insert/$', views.insert, name='roster.insert'),
     url(r'^replace/$', views.replace, name='roster.replace'),
     url(r'^slot/(?P<pk>\d+)/replace/$', views.replace_slot,
         name='roster.replace_slot'),

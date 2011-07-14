@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ page_title }}</h1>
+
+
+{% if authenticated_user_string %}
+<p><a href="{{ url('vcal.my_dates') }}?user={{ authenticated_user_string }}">My Duty dates</a></p>
+{% else %}
+<p>If you log in you can have your own vCal export for your duty days.</p>
+{% endif %}
+
+<p><a href="{{ url('vcal.all_dates') }}">All Sheriff Duty dates</a></p>
+
+{% endblock %}
