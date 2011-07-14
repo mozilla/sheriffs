@@ -466,13 +466,14 @@ def widget_factory(request):  # pragma: no cover
        'the ID name of the widget in the DOM tree (unlikely to change)'),
     ]
     default_options_javascript = []
-    for key, value, comment in default_options:
+    for i, (key, value, comment) in enumerate(default_options):
         if isinstance(value, bool):
             value = str(value).lower()
         elif isinstance(value, basestring):
             value = "'%s'" % value
-        default_options_javascript.append("%s: %s // %s" %
-          (key, value, comment)
+        comma = (i + 1) < len(default_options) and ',' or ''
+        default_options_javascript.append("%s: %s%s // %s" %
+          (key, value, comma, comment)
         )
     default_options_javascript = ',\n'.join(
       '  ' + x for x in default_options_javascript)

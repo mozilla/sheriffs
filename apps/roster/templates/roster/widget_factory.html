@@ -1,7 +1,17 @@
 {% extends "base.html" %}
 
 {% block extra_site_css %}
-{#{{ css('roster.api_documentation') }} #}
+<style>
+#preview-outer {
+    margin-top:40px;
+    padding:5px;
+    background-color:#efefef;
+    margin-bottom:50px;
+}
+#preview-inner {
+    margin:25px;
+}
+</style>
 {% endblock %}
 
 
@@ -10,7 +20,7 @@
 
 
 <form action=".">
-<p>Le code...</p>
+<p><strong>Le code...</strong></p>
 <textarea name="code" style="width:100%" rows="{{ count_default_code_lines }}">{{ default_code }}</textarea>
 </form>
 
@@ -19,4 +29,25 @@
 the widget and its data last so it doesn't hinder the basic rendering of
 the page first.</p>
 
+{% if request.user.is_authenticated %}
+<div id="preview-outer">
+<p><strong>Preview...</strong></p>
+
+<div id="preview-inner">
+{{ default_code|safe }}
+</div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_site_js %}
+<script>
+$(function() {
+  $('textarea[name="code"]').focus(function() {
+    $(this).unbind('focus');
+    this.select();
+  });
+});
+</script>
 {% endblock %}
