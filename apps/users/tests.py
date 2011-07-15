@@ -8,6 +8,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from nose.tools import eq_, ok_
 
+try:
+    from users.auth.backends import MozillaLDAPBackend
+except ImportError:
+    MozillaLDAPBackend = None
+
 
 class UsersTest(TestCase):
 
@@ -188,7 +193,8 @@ class UsersTest(TestCase):
         ok_(User.objects.get(username='Homer'))
 
     def test_mozilla_ldap_backend_basic(self):
-        from users.auth.backends import MozillaLDAPBackend
+        if MozillaLDAPBackend is None:
+            return
         back = MozillaLDAPBackend()
         class LDAPUser:
             def __init__(self, attrs):
