@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django_auth_ldap.backend import LDAPBackend
 
+
 class MozillaLDAPBackend(LDAPBackend):
     """Overriding this class so that I can transform emails to usernames.
 
@@ -29,7 +30,28 @@ class MozillaLDAPBackend(LDAPBackend):
     the *email address* and returns the username for that one.
     """
 
+    def get_or_create_user(self, username, ldap_user):
+        """
+        This must return a (User, created) 2-tuple for the given LDAP user.
+        username is the Django-friendly username of the user. ldap_user.dn is
+        the user's DN and ldap_user.attrs contains all of their LDAP attributes.
+        """
+        # users on this site can't change their email but they can change their
+        # username
+        if ldap_user.attrs.get('mail'):
+            for user in (User.objects
+              .filter(email__iexact=ldap_user.attrs.get('mail')[0])):
+                return (user, False)
+
+        # use the default from django-auth-ldap
+        return User.objects.get_or_create(
+           username__iexact=username,
+           defaults={'username': username.lower()}
+        )
+
+
     def ldap_to_django_username(self, username):
+        """Allow users to use a different username"""
         try:
             return User.objects.get(email=username).username
         except User.DoesNotExist:

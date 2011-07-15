@@ -140,3 +140,74 @@ class UsersTest(TestCase):
         response = self.client.get('/')
         eq_(response.status_code, 200)
         ok_('Mortal' in response.content)
+
+    def test_changing_your_username(self):
+        url = reverse('users.settings')
+        response = self.client.get(url)
+        eq_(response.status_code, 302)
+        path = urlparse(response['location']).path
+        eq_(path, settings.LOGIN_URL)
+
+        mortal = User.objects.create(
+          username='mortal',
+          email='mortal@hotmail.com',
+          first_name='Mortal',
+          last_name='Joe'
+        )
+        mortal.set_password('secret')
+        mortal.save()
+        assert self.client.login(username='mortal', password='secret')
+
+        url = reverse('users.settings')
+        response = self.client.get(url)
+        eq_(response.status_code, 200)
+
+        ok_('value="%s"' % mortal.username in response.content)
+
+        User.objects.create_user(
+          'maxpower',
+          'maxpower@mozilla.com',
+          password='secret',
+        )
+
+        response = self.client.post(url, {'username':' Maxpower '})
+        eq_(response.status_code, 200)
+        ok_('errorlist' in response.content)
+
+        response = self.client.post(url, {'username':'homer   '})
+        eq_(response.status_code, 302)
+
+        ok_(User.objects.get(username='homer'))
+        ok_(not User.objects.filter(username='mortal').exists())
+
+        # stupid but I should be able to save my own username twice
+        response = self.client.post(url, {'username':'homer'})
+        ok_(User.objects.get(username='homer'))
+
+        response = self.client.post(url, {'username':'Homer'})
+        ok_(User.objects.get(username='Homer'))
+
+    def test_mozilla_ldap_backend_basic(self):
+        from users.auth.backends import MozillaLDAPBackend
+        back = MozillaLDAPBackend()
+        class LDAPUser:
+            def __init__(self, attrs):
+                self.attrs = attrs
+        ldap_user = LDAPUser({'mail':['mail@peterbe.com']})
+        user, created = back.get_or_create_user('peter', ldap_user)
+        ok_(created)
+        ok_(user)
+        eq_(user.username, 'peter')
+
+        peppe = User.objects.create_user(
+          'peppe',
+          'mail@peterbe.com',
+        )
+        user, created = back.get_or_create_user('peter', ldap_user)
+        ok_(not created)
+        eq_(user, peppe)
+
+        username = back.ldap_to_django_username('mail@peterbe.com')
+        eq_(username, 'peppe')
+        username = back.ldap_to_django_username('lois@peterbe.com')
+        eq_(username, 'lois')

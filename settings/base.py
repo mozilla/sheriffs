@@ -349,11 +349,13 @@ try:
       "first_name": "givenName",
       "last_name": "sn",
       "email": "mail",
-      "username": "uid",
     }
     from django_auth_ldap.config import LDAPSearch
-    AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=mozilla",
-        ldap.SCOPE_SUBTREE, "mail=%(user)s")
+    AUTH_LDAP_USER_SEARCH = LDAPSearch(
+      "dc=mozilla",
+      ldap.SCOPE_SUBTREE,
+      "mail=%(user)s"
+    )
 
 except ImportError:
     AUTHENTICATION_BACKENDS = (

@@ -1,7 +1,11 @@
 import logging
 from django import http
+from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
+from django.contrib import messages
 import django.contrib.auth.views
 from django.conf import settings
 import jingo
@@ -10,13 +14,9 @@ from models import get_user_profile
 from django.shortcuts import render_to_response as django_render_to_response
 
 
-#@anonymous_csrf
 def login(request):
     # mostly copied from zamboni
     logout(request)
-
-    #if 'to' in request.GET:
-    #    request = _clean_next_url(request)
 
     from monkeypatch_template_engine import jinja_for_django as jfd
     django.contrib.auth.views.render_to_response = jfd
@@ -49,7 +49,26 @@ def logout(request):
     return response
 
 
+@transaction.commit_on_success
 @login_required
 def settings_page(request):
     data = {}
+    if request.method == 'POST':
+        form = forms.SettingsForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            request.user.username = username
+            request.user.save()
+
+            messages.info(
+              request,
+              "Username changed to %s" % username
+            )
+            return redirect(reverse('cal.home'))
+
+    else:
+        initial = {'username': request.user.username}
+        form = forms.SettingsForm(user=request.user, initial=initial)
+
+    data['form'] = form
     return jingo.render(request, 'users/settings.html', data)
