@@ -291,11 +291,6 @@ DOMAIN_METHODS = {
 }
 
 
-AUTHENTICATION_BACKENDS = (
-   'users.email_auth_backend.EmailOrUsernameModelBackend',
-   'users.auth.backends.MozillaLDAPBackend',
-   'django.contrib.auth.backends.ModelBackend',
-)
 
 # Path to Java. Used for compress_assets.
 JAVA_BIN = '/usr/bin/java'
@@ -334,20 +329,34 @@ class Unset:
     def __repr__(self):
         raise NotImplementedError('This settings is supposed to be overridden')
 
-## LDAP
-# these must be set in settings/local.py!
-AUTH_LDAP_SERVER_URI = ''
-AUTH_LDAP_BIND_DN = ''
-AUTH_LDAP_BIND_PASSWORD = ''
+try:
+    ## LDAP
+    import ldap
 
-AUTH_LDAP_START_TLS = True
-AUTH_LDAP_USER_ATTR_MAP = {
-  "first_name": "givenName",
-  "last_name": "sn",
-  "email": "mail",
-  "username": "uid",
-}
-import ldap
-from django_auth_ldap.config import LDAPSearch
-AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=mozilla",
-    ldap.SCOPE_SUBTREE, "mail=%(user)s")
+    AUTHENTICATION_BACKENDS = (
+       'users.email_auth_backend.EmailOrUsernameModelBackend',
+       'users.auth.backends.MozillaLDAPBackend',
+       'django.contrib.auth.backends.ModelBackend',
+    )
+
+    # these must be set in settings/local.py!
+    AUTH_LDAP_SERVER_URI = ''
+    AUTH_LDAP_BIND_DN = ''
+    AUTH_LDAP_BIND_PASSWORD = ''
+
+    AUTH_LDAP_START_TLS = True
+    AUTH_LDAP_USER_ATTR_MAP = {
+      "first_name": "givenName",
+      "last_name": "sn",
+      "email": "mail",
+      "username": "uid",
+    }
+    from django_auth_ldap.config import LDAPSearch
+    AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=mozilla",
+        ldap.SCOPE_SUBTREE, "mail=%(user)s")
+
+except ImporError:
+    AUTHENTICATION_BACKENDS = (
+       'users.email_auth_backend.EmailOrUsernameModelBackend',
+       'django.contrib.auth.backends.ModelBackend',
+    )
