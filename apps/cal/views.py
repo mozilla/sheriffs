@@ -59,24 +59,29 @@ def home(request):
 
     today = datetime.date.today()
 
-    def label(i):
-        if i == -1:
+    def label(date):
+        if date == today - datetime.timedelta(days=1):
             return 'Yesterday'
-        if i == 0:
+        if date == today:
             return 'Today'
-        if i == 1:
+        if date == (today + datetime.timedelta(days=1)):
             return 'Tomorrow'
-        return (today + datetime.timedelta(days=i)).strftime('%A')
+        return date.strftime('%A')
 
+    extra_i = 0
     for i in -1, 0, 1, 2, 3:
-        date = today + datetime.timedelta(days=i)
+        date = today + datetime.timedelta(days=i + extra_i)
+        while date.strftime('%A') in ('Saturday', 'Sunday'):
+            extra_i += 1
+            date = today + datetime.timedelta(days=i + extra_i)
+
         remarks = []
         users = []
         try:
             slot = (Slot.objects
                         .select_related('user')
-                      .get(date__gte=today + datetime.timedelta(days=i),
-                           date__lt=today + datetime.timedelta(days=i + 1))
+                      .get(date__gte=date,
+                           date__lt=date + datetime.timedelta(days=1))
                       )
             pk = slot.pk
             users.append(slot.user)
@@ -86,15 +91,15 @@ def home(request):
                 remarks.append('self')
         except Slot.DoesNotExist:
             pk = None
-            if i >= 0:
+            if date >= today:
                 remarks.append('offer-needed')
-        if i == 0:
+        if date == today:
             remarks.append('today')
-        elif i < 0:
+        elif date < today:
             remarks.append('past')
 
         on_duty_next.append({
-          'label': label(i),
+          'label': label(date),
           'users': users,
           'remarks': remarks,
           'pk': pk,
