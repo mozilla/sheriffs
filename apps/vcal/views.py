@@ -32,6 +32,7 @@ def my_dates(request):
     for search in searches:
         try:
             user = User.objects.get(**{search: user_str})
+            break
         except User.DoesNotExist:
             # try another search
             pass
@@ -51,7 +52,9 @@ def all_dates(request, extra_filter=None, filename="Sheriff Duty.ics",
     # always start on the first of this month
     today = datetime.date.today()
     first = datetime.date(today.year, today.month, 1)
-    slots = Slot.objects.filter(date__gte=first).order_by('date')
+    slots = (Slot.objects.filter(date__gte=first)
+              .order_by('date')
+              .select_related('user'))
     if extra_filter:
         slots = slots.filter(**extra_filter)
     base_url = '%s://%s' % (request.is_secure() and 'https' or 'http',

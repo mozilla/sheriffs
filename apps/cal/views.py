@@ -1,4 +1,5 @@
 import datetime
+from collections import defaultdict
 from django.shortcuts import redirect
 from django import http
 from django.core.urlresolvers import reverse
@@ -215,24 +216,38 @@ def _get_calendar_data(year, month, week, user, sunday_first=False, weeks=5):
     _rowspans = {}
     _is_authenticated = user.is_authenticated()
     _today = datetime.date.today()
+
+    # the code below (with no_weeks==5) causes 100+ SQL queries so instead
+    # we're going to use a dict to save lookups
+    date_range = (
+      date,
+      date + datetime.timedelta(days=7 * no_weeks)
+    )
+    all_slots = defaultdict(list)
+    unclaimed = []
+    users = defaultdict(list)
+    for slot in Slot.objects.filter(date__range=date_range).select_related('user'):
+        all_slots[slot.date].append(slot)
+        users[slot.date].append(slot.user)
+        if slot.swap_needed:
+            unclaimed.append(slot.date)
+
     while len(weeks) < no_weeks:
         days = []
-
         for day_date in _get_day_dates(date, sunday_first=sunday_first):
             remarks = []
             if day_date < _today:
                 remarks.append('past')
-            slots = Slot.objects.filter(date=day_date).select_related('user')
 
-            if slots.filter(swap_needed=True).exists():
+            if day_date in unclaimed:
                 remarks.append('unclaimed')
             elif day_date == _today:
                 remarks.append('today')
-            elif _is_authenticated and slots.filter(user=user).exists():
+            elif _is_authenticated and user in users.get(day_date, []):
                 remarks.append('self')
             day = {'date': day_date,
                    'remarks': remarks,
-                   'slots': slots}
+                   'slots': all_slots[day_date]}
             days.append(Dict(day))
         week = {'days': days}
         if not _months or (_months and date.month != _months[-1]):
@@ -247,8 +262,6 @@ def _get_calendar_data(year, month, week, user, sunday_first=False, weeks=5):
             _rowspans[date.month] += 1
             week['month'] = None
         weeks.append(Dict(week))
-        # if the week ended on 'noday' days, move those into a new week
-
         date += datetime.timedelta(days=7)
 
     for week in weeks:

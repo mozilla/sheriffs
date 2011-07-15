@@ -82,8 +82,6 @@ class SlotResource(ModelResource):
             return u'Today'
         elif date == today + datetime.timedelta(days=1):
             return u'Tomorrow'
-        #elif date == today - datetime.timedelta(days=1):
-        #    return u'Yesterday'
         if (date - today).days < 7:
             return date.strftime('%A')
         return u''
