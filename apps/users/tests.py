@@ -9,6 +9,7 @@ from django.contrib.auth import REDIRECT_FIELD_NAME
 from nose.tools import eq_, ok_
 
 try:
+    import ldap
     from users.auth.backends import MozillaLDAPBackend
 except ImportError:
     MozillaLDAPBackend = None
