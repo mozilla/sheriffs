@@ -355,7 +355,7 @@ try:
     AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=mozilla",
         ldap.SCOPE_SUBTREE, "mail=%(user)s")
 
-except ImporError:
+except ImportError:
     AUTHENTICATION_BACKENDS = (
        'users.email_auth_backend.EmailOrUsernameModelBackend',
        'django.contrib.auth.backends.ModelBackend',
