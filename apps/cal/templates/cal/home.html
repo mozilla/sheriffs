@@ -1,0 +1,247 @@
+{#
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   - 
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   - 
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   - 
+   - The Original Code is Mozilla Sheriff Duty.
+   - 
+   - The Initial Developer of the Original Code is Mozilla Corporation.
+   - Portions created by the Initial Developer are Copyright (C) 2011
+   - the Initial Developer. All Rights Reserved.
+   - 
+   - Contributor(s):
+   - 
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   - 
+   - ***** END LICENSE BLOCK *****
+ -->
+#}
+
+{% extends "base.html" %}
+
+{% block content %}
+<div id="cal-bars">
+	<div id="deck"><div>
+		<h2><span>Who's on Duty Next</span></h2>
+
+		<ul>
+                {% for duty in on_duty_next %}
+			<li class="{{ ' '.join(duty['remarks']) }}">
+				<strong>{{ duty['label'] }}</strong>
+                                {% for user in duty['users'] %}
+				<a class="sheriff" href="#">
+                                    {{ get_user_name(user) }}
+                                </a>
+                                {% else %}
+                                  no one :(
+                                {% endfor %}
+                                {% if 'past' not in duty['remarks'] %}
+				<span>
+                                  {% if 'self' in duty['remarks'] %}
+					<a class="swap-req" data-pk="{{ duty['pk'] }}" href="#"
+                                           title="Request a swap on {{ format_date(duty['date']) }}"
+                                           >Request a Swap</a>
+                                  {% else %}
+					<a class="swap-offer" data-pk="{{ duty['pk'] }}" href="#"
+                                           title="Offer to swap on {{ format_date(duty['date']) }}"
+                                        >Offer to swap</a>
+                                  {% endif %}
+				</span>
+                                {% endif %}
+			</li>
+                {% endfor %}
+		</ul>
+	</div></div>
+
+        {% if my_duty_dates %}
+	<div id="schedule"><div>
+		<h2><span>When I'm on Duty</span></h2>
+		<ul>
+                {% for duty in my_duty_dates %}
+			<li class="{{ ' '.join(duty['remarks']) }}">
+				<a class="date" href="">{{ duty['date'].strftime(date_format) }}</a>
+                                {% if 'last' not in duty['remarks'] %}
+				<span>
+					<a class="swap-req" data-pk="{{ duty['pk'] }}" href="#"
+                                        title="Request a swap on {{ format_date(duty['date']) }}">Request a Swap</a>
+
+				</span>
+                                {% endif %}
+			</li>
+                 {% endfor %}
+		</ul>
+	</div>
+        </div>
+        {% endif %}
+</div>
+
+
+<div id="calendar">
+
+{% include "cal/_calendar_navigation.html" %}
+
+	<div><table>
+		<colgroup>
+
+			<col id="col-month" />
+			<col id="col-sun" />
+			<col id="col-mon" />
+			<col id="col-tue" />
+			<col id="col-wed" />
+			<col id="col-thu" />
+			<col id="col-fri" />
+			<col id="col-sat" />
+		</colgroup>
+
+		<thead>
+			<tr>
+				<th></th>
+				<th>Sun</th>
+				<th>Mon</th>
+				<th>Tue</th>
+				<th>Wed</th>
+
+				<th>Thu</th>
+				<th>Fri</th>
+				<th>Sat</th>
+			</tr>
+		</thead>
+                <tbody>
+                {% for week in weeks %}
+                  <tr>
+                  {% if week.month %}
+		    <th rowspan="{{ week.month.rowspan }}">{{ week.month.label }}</th>
+                  {% endif %}
+                  {% for day in week.days %}
+                     <td class="{{ ' '.join(day.remarks) }}">
+                       {% if 'noday' not in day.remarks %}
+                       <div class="day">{{ day.date.strftime('%d') }}</div>
+                       {% for slot in day.slots %}
+                       <p class="sheriff">
+                         {% if slot.user == request.user %}
+                           {% if 'past' in day.remarks %}
+                           <strong>I was on Duty</strong>
+                           {% else %}
+                           <strong>I'm on Duty</strong>
+                           {% endif %}
+                         {% else %}
+                         <a href="#">{{ get_user_name(slot.user) }}</a>
+                         {% endif %}
+                       <p>
+                       {% if slot.swap_needed %}
+                       <p class=""><strong>Swap Needed</strong><p>
+                       {% endif %}
+                         {% if 'past' not in day.remarks %}
+                           {% if slot.user == request.user %}
+                           <p class="command"><a class="swap-req" href="#"
+                           title="Request a swap on {{ format_date(slot.date) }}"
+                           data-pk="{{ slot.pk }}">Request to Swap</a><p>
+                           {% else %}
+                           <p class="command"><a class="swap-offer" href="#"
+                           title="Offer to swap on {{ format_date(slot.date) }}"
+                           data-pk="{{ slot.pk }}">Offer to Swap</a><p>
+                           {% endif %}
+                         {% endif %}
+                       {% endfor %}
+                       {% endif %}
+                     </td>
+                  {% endfor %}
+                  </tr>
+                {% endfor %}
+                </tbody>
+
+	</table></div>
+
+{% include "cal/_calendar_navigation.html" %}
+<p><a href="{{ url('vcal.vcal') }}" title="vCal formats for your iCal or Google Calendar">vCal exports</a></p>
+
+</div>
+
+{% endblock %}
+
+{% block outside_body_div %}
+<div id="swapreq-lightbox" class="lightbox">
+	<form method="post" action="{{ url('roster.request_swap') }}">{{ csrf() }}
+        <div>
+		<h2>Request a Swap of Sheriff Duty</h2>
+
+		<p>You are asking for another sheriff to assume duty on:</p>
+		<div class="indent">
+			<p>
+				<strong>Friday, August 8, 2009</strong>
+			</p>
+		</div>
+		<p>
+			An email will be sent to the sheriffs' mailing list
+			with this request.
+		</p>
+
+		<p>Do you want to leave a comment with this request?</p>
+		<div class="indent">
+			<p>
+				<textarea name="comment" rows="4" cols="56"></textarea>
+			</p>
+		</div>
+		<p class="buttons">
+			<input type="submit" class="submit" value="Make the Request" />
+                        <input type="hidden" name="pk" value="">
+
+			<a class="cancel" href="#">Never Mind</a>
+		</p>
+	</div></form>
+</div>
+
+<div id="swapoffer-lightbox" class="lightbox">
+	<form method="post" action="{{ url('roster.offer_swap') }}">{{ csrf() }}
+        <div>
+		<h2>Offer to Swap Sheriff Duty</h2>
+		<p>
+
+			You are offering to take over sheriff duty on
+		</p>
+		<div class="indent">
+			<p>
+				<strong class="date">Thursday, August 7, 2009</strong>
+			</p>
+		</div>
+		<p>
+			An email will be sent to the current sheriff,
+
+			<a class="sheriff">Stuart Parmenter <em>(stuart)</em></a>,
+			requesting his permission.
+		</p>
+
+		<p>Do you want to leave a comment for with your offer?</p>
+		<div class="indent">
+			<p>
+				<textarea name="comment" rows="4" cols="56"></textarea>
+			</p>
+		</div>
+		<p class="buttons">
+			<input type="submit" class="submit" value="Extend the Offer" >
+                        <input type="hidden" name="pk" value="">
+			<a class="cancel" href="#">Never Mind</a>
+		</p>
+	</div></form>
+</div>
+
+{% endblock %}

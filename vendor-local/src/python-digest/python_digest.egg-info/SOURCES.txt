@@ -1,0 +1,10 @@
+README
+python_digest/__init__.py
+python_digest/http.py
+python_digest/tests.py
+python_digest/utils.py
+python_digest.egg-info/PKG-INFO
+python_digest.egg-info/SOURCES.txt
+python_digest.egg-info/dependency_links.txt
+python_digest.egg-info/top_level.txt
+python_digest.egg-info/zip-safe

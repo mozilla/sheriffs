@@ -1,17 +1,14 @@
-playdoh
-=======
+Mozilla Sheriff Duty
+====================
 
+This app is all about Mozilla build engineers taking turns to be
+"Sheriff". The core of this application is a roster of users and dates
+which can be swapped around and repeated.
 Mozilla's Playdoh is a web application template based on [Django][django].
 
-Patches are welcome! Feel free to fork and contribute to this project on
-[github][gh-playdoh].
+The original requirement came from [this bug][bug].
 
-Full [documentation][docs] is available as well.
-
-
-[django]: http://www.djangoproject.com/
-[gh-playdoh]: https://github.com/mozilla/playdoh
-[docs]: http://playdoh.rtfd.org/
+[bug]: https://bugzilla.mozilla.org/show_bug.cgi?id=571886#c26
 
 
 License

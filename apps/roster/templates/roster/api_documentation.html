@@ -1,0 +1,157 @@
+{#
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   - 
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   - 
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   - 
+   - The Original Code is Mozilla Sheriff Duty.
+   - 
+   - The Initial Developer of the Original Code is Mozilla Corporation.
+   - Portions created by the Initial Developer are Copyright (C) 2011
+   - the Initial Developer. All Rights Reserved.
+   - 
+   - Contributor(s):
+   - 
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   - 
+   - ***** END LICENSE BLOCK *****
+ -->
+#}
+
+{% extends "base.html" %}
+
+{% block extra_site_css %}
+{{ css('roster.api_documentation') }}
+{% endblock %}
+
+
+{% block content %}
+<h1>API Documentation</h1>
+
+<section>
+<h2>General notes</h2>
+<ul>
+  <li>There is no authentication but also no actions available to change data</li>
+  <li>The default format is <code>JSON</code> but if you don't specify <code>?format=json</code>
+  and try one of these URLs in a browser it will default to the <code>HTML</code> format.</li>
+</ul>
+</section>
+
+<section>
+  <h2>Getting a list of slots</h2>
+  <p class="uri">{{ slot_base_url }}</p>
+  <p class="examples">
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ slot_base_url }}?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="notes">
+  The expected outcome is something like this:</p>
+<pre>
+{"meta": {"limit": 10,
+           "next": "/api/v1/slot/?offset=10&amp;limit=10&amp;format=json",
+           "offset": 0,
+           "previous": null,
+           "total_count": 39},
+ "objects": [{"date": "Thursday, July 07, 2011",
+               "date_iso": "2011-07-07",
+               "email": "ashleynoval@gmail.com",
+               "id": 32,
+               "resource_uri": "/api/v1/slot/32/",
+               "swap_needed": false,
+               "user": "Ashley  (ashley)'},
+              {"date": "Friday, July 08, 2011",
+               "date_iso": "2011-07-08",
+               "email": "peterbe@mozilla.com",
+               "id": 33,
+               "resource_uri": "/api/v1/slot/33/",
+               "swap_needed": false,
+               "user": "Peter  (peterbe)'},
+               ...
+</pre>
+  <p class="notes">
+  If you append <code>?limit=5</code> to the URL it will obviously limit it to the next 5 slots.
+  </p>
+
+</section>
+
+<section>
+  <h2>Getting an individual slot</h2>
+  <p class="uri">{{ slot_base_url }}:id/</p>
+  <p class="examples">
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ slot_base_url }}{{ random_slot_id }}/?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="notes">
+  The expected outcome is something like this:</p>
+<pre>
+{"date": "Thursday, July 14, 2011",
+ "date_iso": "2011-07-14",
+ "email": "greger@gmail.com",
+ "id": 39,
+ "resource_uri": "/api/v1/slot/39/",
+ "swap_needed": false,
+ "user": "Greger Bengtsson (greger)"}
+</pre>
+</section>
+
+<section>
+  <h2>Special entry points</h2>
+  <p class="uri">{{ api_base_url }}today/</p>
+  <p class="examples">
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ api_base_url }}today/?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="uri">{{ api_base_url }}tomorrow/</p>
+  <p>
+  {% for each in ('html','json','jsonp') %}
+     <a href="{{ api_base_url }}tomorrow/?format={{ each }}">{{ each }}</a>
+     {% if not loop.last %}&bull;{% endif %}
+  {% endfor %}
+  </p>
+  <p class="notes">
+  The expected outcome is something like this:</p>
+<pre>
+{"meta": {"limit": 20,
+           "next": null,
+           "offset": 0,
+           "previous": null,
+           "total_count": 1},
+ "objects": [{"date": "Saturday, July 09, 2011",
+               "date_iso": "2011-07-09",
+               "email": "thua@mozilla.com",
+               "id": 34,
+               "resource_uri": "/api/v1/tomorrow/34/",
+               "swap_needed": false,
+               "user": "Thua Jonasson (thua)'}]}
+</pre>
+  <p class="notes">
+  Note how it returns a list of slots. Even though it's highly likely,
+  it's not a guarantee that there will be only one slot on a specific date.
+  </p>
+</section>
+
+{% endblock %}

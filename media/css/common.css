@@ -1,0 +1,177 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * 
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ * 
+ * The Original Code is Mozilla Sheriff Duty.
+ * 
+ * The Initial Developer of the Original Code is Mozilla Corporation.
+ * Portions created by the Initial Developer are Copyright (C) 2011
+ * the Initial Developer. All Rights Reserved.
+ * 
+ * Contributor(s):
+ * 
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ * 
+ * ***** END LICENSE BLOCK ***** */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td  {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-weight: inherit;
+	font-style: inherit;
+	text-decoration: none;
+	vertical-align: baseline;
+	background: transparent;
+	}
+
+ol, ul {
+	list-style: none;
+	}
+
+blockquote, q {
+	quotes: none;
+	}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+	}
+
+input, button {
+	margin: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-weight: inherit;
+	font-style: inherit;
+	}
+
+
+
+
+html {
+	font: 16px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	background: #D5D0B2;
+	color: #424242;
+	}
+
+#content h1 { font-size: 1.7em; }
+#content h2 { font-size: 1.5em; }
+#content h3 { font-size: 1.2em; }
+#content h1,
+#content h2,
+#content h3 { font-weight:bold; margin-bottom:10px; margin-top:30px; }
+a {
+	color: #327ABA;
+	}
+a:hover {
+	background: rgba(50, 122, 186, .125);
+	}
+
+
+#body {
+	width: 58.75em;
+	margin: 0 auto;
+	}
+
+
+#header {
+	position: relative;
+	background: #424242;
+	height: 6.68em;
+	margin: 1.5em 0;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	}
+	#header h1 {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 30.5em;
+		height: 8.18em;
+		text-indent: -1000em;
+		background: url(/media/img/sheriff-logo.png) no-repeat 0 bottom;
+		}
+
+#user {
+	position: absolute;
+	right: 2.66em;
+	top: 1em;
+	font-size: .75em;
+	color: #B0AC96;
+	}
+	#user strong {
+		color: #D5D0B2;
+	}
+	#user a {
+		margin-left: .5em;
+		}
+
+#tabs {
+	position: absolute;
+	right: 2em;
+	bottom: 0;
+	padding: .5em 0;
+	}
+	#tabs li {
+		display: inline;
+		margin-left: 1em;
+		}
+	#tabs a {
+		padding: .5em 1em;
+		-moz-border-radius: .25em .25em 0 0;
+		-webkit-border-radius: .25em;
+		-webkit-border-bottom-left-radius: 0;
+		-webkit-border-bottom-right-radius: 0;
+		background: #727167;
+		color: #D5D0B2;
+		}
+	#tabs a.active,
+	#tabs a.active:hover {
+		background: #D5D0B2;
+		color: #424242;
+		}
+	#tabs a:hover {
+		color: #fff;
+		border-bottom: none;
+		}
+
+
+.errorlist li { color:red; }
+
+.ui-datepicker td,
+.ui-datepicker span { font-size: 0.8em; }
+code { font-family: "Courier 10 Pitch",Courier,monospace }

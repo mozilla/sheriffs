@@ -1,0 +1,17 @@
+Metadata-Version: 1.0
+Name: python-digest
+Version: 1.7
+Summary: A Python library to aid in implementing HTTP Digest Authentication.
+Home-page: http://bitbucket.org/akoha/python-digest/
+Author: Akoha Inc.
+Author-email: adminmail@akoha.com
+License: UNKNOWN
+Description: 
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
