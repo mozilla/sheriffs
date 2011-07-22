@@ -325,10 +325,6 @@ https://sheriffs.mozilla.com
 
 MAILINGLIST_EMAIL = 'sheriffs@mozilla.com'
 
-class Unset:
-    def __repr__(self):
-        raise NotImplementedError('This settings is supposed to be overridden')
-
 try:
     ## LDAP
     import ldap
