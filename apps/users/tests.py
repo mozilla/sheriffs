@@ -264,4 +264,3 @@ class UsersTest(TestCase):
         eq_(input['autocorrect'], 'off')
         eq_(input['spellcheck'], 'false')
         eq_(input['autocapitalize'], 'off')
-        eq_(input['type'], 'email')
