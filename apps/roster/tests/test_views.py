@@ -447,10 +447,20 @@ class RosterTest(TestCase):
           'peter@mozilla.com',
           password='secret',
         )
+        other = User.objects.create_user(
+          'other',
+          'other@mozilla.com',
+          password='secret',
+        )
         today = datetime.date.today()
         slot = Slot.objects.create(
           user=peter,
           date=today,
+        )
+
+        Slot.objects.create(
+          user=other,
+          date=today + datetime.timedelta(days=1),
         )
 
         url = reverse('roster.request_swap')
@@ -473,13 +483,17 @@ class RosterTest(TestCase):
         response = self.client.post(url, data)
         eq_(response.status_code, 302)
 
-        slot, = Slot.objects.all()
+        slot, = Slot.objects.filter(user=peter)
         ok_(slot.swap_needed)
 
         # that should have sent an email to admin@mozilla.com
         assert 1 == len(mail.outbox)
         email = mail.outbox[-1]
-        eq_(email.to, [settings.MAILINGLIST_EMAIL])
+        if getattr(settings, 'MAILINGLIST_EMAIL', None):
+            eq_(email.to, [settings.MAILINGLIST_EMAIL])
+        else:
+            ok_('peter@mozilla.com' not in email.to)
+            ok_('other@mozilla.com' in email.to)
         ok_('request' in email.subject.lower())
         ok_('swap' in email.subject.lower())
         eq_(email.from_email, peter.email)
@@ -519,7 +533,7 @@ class RosterTest(TestCase):
         eq_(swap.state, Swap.STATE_ACCEPTED)
         eq_(swap.user, tom)
 
-        slot, = Slot.objects.all()
+        slot, = Slot.objects.filter(user=tom)
         eq_(slot.user, tom)
         ok_(not slot.swap_needed)
 
