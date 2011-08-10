@@ -1,0 +1,23 @@
+from base import *
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sheriffs',
+        'USER': xxxx,
+        'PASSWORD': xxxxx,
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {
+            'init_command': 'SET storage_engine=InnoDB',
+            'charset' : 'utf8',
+            'use_unicode' : True,
+        },
+        'TEST_CHARSET': 'utf8',
+        'TEST_COLLATION': 'utf8_general_ci',
+    },
+}
+
+AUTH_LDAP_SERVER_URI = 'ldap://pm-ns.mozilla.org'
+AUTH_LDAP_BIND_DN = xxxxx
+AUTH_LDAP_BIND_PASSWORD = xxxxx

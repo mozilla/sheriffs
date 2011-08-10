@@ -323,7 +323,9 @@ EMAIL_SIGNATURE = """Mozilla Sheriff Duty
 https://sheriffs.mozilla.com
 """
 
-MAILINGLIST_EMAIL = 'sheriffs@mozilla.com'
+# If you don't have a MAILINGLIST_EMAIL email address all emails will instead
+# be sent to all active and future sheriffs
+#MAILINGLIST_EMAIL = 'sheriffs@mozilla.com'
 
 try:
     ## LDAP
