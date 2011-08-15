@@ -160,7 +160,11 @@ class UsersTest(TestCase):
         then = datetime.datetime.strptime(date, '%d-%b-%Y').date()
         today = datetime.date.today()
         days = settings.SESSION_COOKIE_AGE / 24 / 3600
-        eq_((then - today).days, days)
+        try:
+            eq_((then - today).days, days)
+        except AssertionError:
+            print "Make sure your settings.TIME_ZONE matches your OS clock"
+            raise
 
     def test_login_by_email(self):
         url = reverse('users.login')

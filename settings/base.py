@@ -43,7 +43,7 @@ USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = False
+USE_L10N = True
 
 # Gettext text domain
 TEXT_DOMAIN = 'messages'
