@@ -55,5 +55,9 @@ def active_tab(request):
         return {'active_tab': 'roster'}
     if '/settings/' in request.path:
         return {'active_tab': 'settings'}
+    if '/users/' in request.path:
+        # doesn't actually exist as a tab but better than defaulting to
+        # the calendar tab
+        return {'active_tab': 'users'}
 
     return {'active_tab': 'calendar'}
