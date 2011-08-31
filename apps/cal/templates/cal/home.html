@@ -218,6 +218,7 @@
 	<form method="post" action="{{ url('roster.offer_swap') }}">{{ csrf() }}
         <div>
 		<h2>Offer to Swap Sheriff Duty</h2>
+		{% if request.user.is_authenticated() %}
 		<p>
 
 			You are offering to take over sheriff duty on
@@ -245,6 +246,14 @@
                         <input type="hidden" name="pk" value="">
 			<a class="cancel" href="#">Never Mind</a>
 		</p>
+		{% else %}
+		<p>You can do this and many other fancy things<br>
+		<a href="{{ url('users.login') }}">if you just log in first</a>
+		</p>
+                <p style="text-align:right">
+                <a class="cancel" href="#">close</a>
+                </p>
+		{% endif %}
 	</div></form>
 </div>
 
