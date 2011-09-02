@@ -326,7 +326,7 @@ EMAIL_SIGNATURE = """Mozilla Sheriff Duty
 https://sheriffs.mozilla.com
 """
 
-SESSION_COOKIE_AGE = 365  # default was 14
+SESSION_COOKIE_AGE = 365 * (24 * 3600)   # default was 14, changed to 365 days
 
 # If you don't have a MAILINGLIST_EMAIL email address all emails will instead
 # be sent to all active and future sheriffs
