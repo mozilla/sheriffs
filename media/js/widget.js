@@ -1,24 +1,24 @@
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
- * 
+ *
  * The contents of this file are subject to the Mozilla Public License Version
  * 1.1 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  * http://www.mozilla.org/MPL/
- * 
+ *
  * Software distributed under the License is distributed on an "AS IS" basis,
  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
  * for the specific language governing rights and limitations under the
  * License.
- * 
+ *
  * The Original Code is Mozilla Sheriff Duty.
- * 
+ *
  * The Initial Developer of the Original Code is Mozilla Corporation.
  * Portions created by the Initial Developer are Copyright (C) 2011
  * the Initial Developer. All Rights Reserved.
- * 
+ *
  * Contributor(s):
- * 
+ *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
  * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
@@ -30,7 +30,7 @@
  * and other provisions required by the GPL or the LGPL. If you do not delete
  * the provisions above, a recipient may use your version of this file under
  * the terms of any one of the MPL, the GPL or the LGPL.
- * 
+ *
  * ***** END LICENSE BLOCK ***** */
 
 // Mozilla Sheriffs Duty Widget
@@ -46,6 +46,8 @@ var Sheriffs = (function() {
   var CONTENT_URL = BASE_URL + '/api/v1/slot/?format=jsonp&callback=Sheriffs.callback&limit=' + LIMIT;
   var ROOT = _options.root_node_id || 'sheriffs_widget';
   var ROOT_CSS = _options.root_css || '';
+  var INCLUDE_FOOTER = _options.include_footer;
+  if (typeof INCLUDE_FOOTER == 'undefined') INCLUDE_FOOTER = true;
   var CSS = '#sheriffs_widget td { padding-right:15px; }#sheriffs_widget .foot { font-size:10px;';
 
   function insertStylesheet() {
@@ -91,13 +93,15 @@ var Sheriffs = (function() {
          table.appendChild(tr);
        }
        div.appendChild(table);
-       // consider making this a link
-       var foot = document.createElement('a');
-       foot.setAttribute('class', 'foot');
-       foot.setAttribute('href', BASE_URL);
-       foot.setAttribute('title', 'Widget version ' + Sheriffs_Widget_Version);
-       foot.appendChild(document.createTextNode('Mozilla Sheriffs Duty'));
-       div.appendChild(foot);
+
+       if (INCLUDE_FOOTER) {
+         var foot = document.createElement('a');
+         foot.setAttribute('class', 'foot');
+         foot.setAttribute('href', BASE_URL);
+         foot.setAttribute('title', 'Widget version ' + Sheriffs_Widget_Version);
+         foot.appendChild(document.createTextNode('Mozilla Sheriffs Duty'));
+         div.appendChild(foot);
+       }
        div.style.display = 'block';
      }
   };

@@ -492,7 +492,7 @@ def api_documentation(request):
     return jingo.render(request, 'roster/api_documentation.html', data)
 
 
-@staff_required
+@login_required
 def widget_factory(request):  # pragma: no cover
     data = {}
 
@@ -502,24 +502,31 @@ def widget_factory(request):  # pragma: no cover
        'whether to say "Today" or "Thursday" instead of the full date'),
       ('limit', 5, 'number of items to display'),
       ('root_css', '',
-       'possible extra CSS added to the root widget element (e.g. border:1px '\
-       'solid green)'),
+       'possible extra CSS added to the root widget element (e.g. color:#ccc)'),
+      ('include_footer', True,
+       'include the footer link back to Mozilla Sheriffs Duty'),
       ('host_name', this_domain,
        'this default host name (unlikely to change)'),
       ('root_node_id', 'sheriffs_widget',
        'the ID name of the widget in the DOM tree (unlikely to change)'),
     ]
     default_options_javascript = []
+    _longest = max(len('%s %s' % (x, y)) for (x, y, z) in default_options)
     for i, (key, value, comment) in enumerate(default_options):
         if isinstance(value, bool):
             value = str(value).lower()
         elif isinstance(value, basestring):
             value = "'%s'" % value
         comma = (i + 1) < len(default_options) and ',' or ''
-        default_options_javascript.append("%s: %s%s // %s" %
-          (key, value, comma, comment)
+        _length = len('%s %s' % (key, value))
+        if i == len(default_options) - 1:
+            # last option, no comma
+            _length -= 1
+        whitespace = ' ' * (_longest - _length + 2)
+        default_options_javascript.append("%s: %s%s%s// %s" %
+          (key, value, comma, whitespace, comment)
         )
-    default_options_javascript = ',\n'.join(
+    default_options_javascript = '\n'.join(
       '  ' + x for x in default_options_javascript)
 
     default_code = """
