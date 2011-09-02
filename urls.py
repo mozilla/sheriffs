@@ -32,7 +32,7 @@ v1_api.register(TomorrowResource())
 urlpatterns += patterns('',
     (r'^api/', include(v1_api.urls)),
 #    (r'^api/', lambda x: HttpResponseRedirect('/roster/api/documentation/')),
-    (r'^api/', redirect_to, {'url': '/roster/api/documentation/'}),
+    (r'^api/$', redirect_to, {'url': '/roster/api/documentation/'}),
 )
 
 

@@ -190,7 +190,8 @@ MINIFY_BUNDLES = {
         'core': (
             'js/libs/jquery-1.6.2.min.js',
             'js/notifications.js',
-            'js/calendar.js'
+            'js/calendar.js',
+            'js/common.js',
         ),
         'roster.initialize': (
             'js/roster/initialize.js',
