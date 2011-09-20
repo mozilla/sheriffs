@@ -1,4 +1,6 @@
 import datetime
+import jingo
+from django.core.urlresolvers import reverse
 from django.utils.feedgenerator import Atom1Feed
 from django.conf import settings
 from django.contrib.syndication.views import Feed
@@ -16,19 +18,34 @@ class GCalAtom1Feed(Atom1Feed):
 
 class AtomRosterFeed(Feed):
     feed_type = GCalAtom1Feed
-    title = "Atom roster feed"
+    title = "Mozilla Sheriff Duty"
     link = "/"
-    subtitle = "Hi"
+    subtitle = "Atom roster feed adhering to Google Calendar queries"
 
-    def items(self, limit=None):
-        today = datetime.date.today()
-        future_slots = (Slot.objects
-                        .filter(date__gte=today)
-                        .count())
-        if limit is None:
+    def get_object(self, request):
+        return request
+
+    def items(self, request):
+        # because this is a G(oogle)CalAtom1Feed we can pick up certain query
+        # string variables that dictate what dates to return
+        if request.GET.get('start-min'):
+            min_date = datetime.datetime.strptime(
+              request.GET.get('start-min'),
+              '%Y-%m-%d'
+            ).date()
+        else:
+            min_date = datetime.date.today()
+
+        if request.GET.get('max-results'):
+            limit = int(request.GET.get('max-results'))
+        else:
             limit = 10
+
+        future_slots = (Slot.objects
+                        .filter(date__gte=min_date)
+                        .count())
         dates = []
-        possible_dates = [today + datetime.timedelta(days=x)
+        possible_dates = [min_date + datetime.timedelta(days=x)
                           for x in range(min(future_slots, limit))]
         for date in possible_dates:
             # only add it if it has slots in it
@@ -37,19 +54,18 @@ class AtomRosterFeed(Feed):
         return dates
 
     def item_link(self, date):
-#        print dir(date)
-        return date.strftime(settings.DEFAULT_DATE_FORMAT)
-        # there isn't really a URL for a Slot
-        return '/#slot:%s' % item.pk
+        return '/' + '#' + date.strftime('%Y-%m-%d')
 
     def item_guid(self, date):
         return date.isoformat()
-        return date.strftime(settings.DEFAULT_DATE_FORMAT)
 
     def item_title(self, date):
         slots = Slot.objects.filter(date=date).select_related('user')
         title = [get_user_name(x.user) for x in slots]
         return ' & '.join(title)
-        print "DATE", repr(date)
-        return "HI"
-        return get_user_name(item.user)
+
+
+def test_atom_feed(request):  # pragma: no cover
+    # this is not a unit test
+    data = {'url': reverse('roster.feed.atom')}
+    return jingo.render(request, 'roster/test_atom_feed.html', data)

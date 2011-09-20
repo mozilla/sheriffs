@@ -118,3 +118,105 @@ class FeedTest(TestCase):
           '<title>%s &amp; %s</title>' % (b, a)
         ]
         ok_(combined[0] in content or combined[1] in content)
+
+    def test_atom_feed_varying_start_date(self):
+        # the feed can take `?start-min=2012-12-30` as a query string
+        url = reverse('roster.feed.atom')
+
+        tom = User.objects.create_user(
+          'tom',
+          'tom@mozilla.com',
+          password='secret',
+        )
+        tom.first_name = 'Tom'
+        tom.last_name = 'Sawyer'
+        tom.save()
+        dick = User.objects.create_user(
+          'dick',
+          'dick@mozilla.com',
+          password='secret',
+        )
+
+        one_day = datetime.timedelta(days=1)
+        yesterday = datetime.date.today() - one_day
+        slot0 = Slot.objects.create(
+          user=dick,
+          date=yesterday
+        )
+
+        today = datetime.date.today()
+        slot1 = Slot.objects.create(
+          user=tom,
+          date=today
+        )
+        tomorrow = today + one_day
+        slot2 = Slot.objects.create(
+          user=dick,
+          date=tomorrow,
+          swap_needed=True,
+        )
+
+        response = self.client.get(url)
+        eq_(response.status_code, 200)
+        eq_(response.content.count('<entry'), 2)
+        eq_(response.content.count('Tom'), 1)
+        eq_(response.content.count('dick'), 1)
+
+        response = self.client.get(url, {
+          'start-min': tomorrow.strftime('%Y-%m-%d')
+        })
+        eq_(response.status_code, 200)
+        eq_(response.content.count('<entry'), 1)
+        eq_(response.content.count('Tom'), 0)
+        eq_(response.content.count('dick'), 1)
+
+    def test_atom_feed_max_results(self):
+        # the feed can take `?max-results=X` as a query string
+        url = reverse('roster.feed.atom')
+
+        tom = User.objects.create_user(
+          'tom',
+          'tom@mozilla.com',
+          password='secret',
+        )
+        tom.first_name = 'Tom'
+        tom.last_name = 'Sawyer'
+        tom.save()
+        dick = User.objects.create_user(
+          'dick',
+          'dick@mozilla.com',
+          password='secret',
+        )
+
+        one_day = datetime.timedelta(days=1)
+        yesterday = datetime.date.today() - one_day
+        slot0 = Slot.objects.create(
+          user=dick,
+          date=yesterday
+        )
+
+        today = datetime.date.today()
+        slot1 = Slot.objects.create(
+          user=tom,
+          date=today
+        )
+        tomorrow = today + one_day
+        slot2 = Slot.objects.create(
+          user=dick,
+          date=tomorrow,
+          swap_needed=True,
+        )
+
+        response = self.client.get(url)
+        eq_(response.status_code, 200)
+        eq_(response.content.count('<entry'), 2)
+        eq_(response.content.count('Tom'), 1)
+        eq_(response.content.count('dick'), 1)
+
+        response = self.client.get(url, {
+          'max-results': 1
+        })
+        eq_(response.status_code, 200)
+        eq_(response.content.count('<entry'), 1)
+        eq_(response.content.count('Tom'), 1)
+        eq_(response.content.count('dick'), 0)

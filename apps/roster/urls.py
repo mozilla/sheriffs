@@ -34,7 +34,7 @@
 # ***** END LICENSE BLOCK *****
 
 from django.conf.urls.defaults import patterns, url
-from .feeds import AtomRosterFeed
+from .feeds import AtomRosterFeed, test_atom_feed
 import views
 
 urlpatterns = patterns('',
@@ -53,5 +53,6 @@ urlpatterns = patterns('',
         name='roster.api_documentation'),
     url(r'^widget/$', views.widget_factory, name='roster.widget_factory'),
     url(r'^feed/atom/$', AtomRosterFeed(), name='roster.feed.atom'),
+    url(r'^feed/atom/test$', test_atom_feed, name='roster.feed.atom.test'),
     url(r'^$', views.index, name='roster.index'),
 )
