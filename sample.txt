@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom'
+      xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/'
+      xmlns:gCal='http://schemas.google.com/gCal/2005'
+      xmlns:gd='http://schemas.google.com/g/2005'>
+  <id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full</id>
+  <updated>2011-08-30T03:23:59.000Z</updated>
+  <category scheme='http://schemas.google.com/g/2005#kind'
+            term='http://schemas.google.com/g/2005#event'/>
+  <title type='text'>Mozilla Sheriff Schedule</title>
+  <subtitle type='text'/>
+  <link rel='alternate' type='text/html'
+        href='http://www.google.com/calendar/embed?src=j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com'/>
+  <link rel='http://schemas.google.com/g/2005#feed'
+        type='application/atom+xml'
+	href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full'/>
+  <link rel='http://schemas.google.com/g/2005#batch'
+        type='application/atom+xml'
+	href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/batch'/>
+  <link rel='self'
+        type='application/atom+xml'
+	href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full?max-results=25'/>
+  <link rel='next'
+        type='application/atom+xml'
+	href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full?start-index=26&amp;max-results=25'/>
+  <author>
+    <name>mconnor@gmail.com</name>
+    <email>mconnor@gmail.com</email>
+  </author>
+  <generator version='1.0' uri='http://www.google.com/calendar'>Google Calendar</generator>
+  <openSearch:totalResults>59</openSearch:totalResults>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+  <gCal:timezone value='America/Los_Angeles'/>
+  <gCal:timesCleaned value='0'/>
+  <gd:where valueString=''/>
+  <entry>
+    <id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/0ksvdljf9vrpg7rmnsmaib7e3o_20110705</id>
+    <published>2007-10-12T16:33:09.000Z</published>
+    <updated>2011-06-28T18:23:06.000Z</updated>
+    <category scheme='http://schemas.google.com/g/2005#kind'
+              term='http://schemas.google.com/g/2005#event'/>
+    <title type='text'>David Baron (dbaron)</title>
+    <content type='text'/>
+    <link rel='alternate'
+          type='text/html'
+	  href='http://www.google.com/calendar/event?eid=MGtzdmRsamY5dnJwZzdybW5zbWFpYjdlM29fMjAxMTA3MDUgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/>
+    <link rel='self'
+          type='application/atom+xml'
+          href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/0ksvdljf9vrpg7rmnsmaib7e3o_20110705'/>
+    <author>
+      <name>Mozilla Sherriff Schedule</name>
+    </author>
+    <gd:comments>
+      <gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/0ksvdljf9vrpg7rmnsmaib7e3o_20110705/comments'/>
+    </gd:comments>
+    <gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/>
+    <gd:where/>
+    <gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/0ksvdljf9vrpg7rmnsmaib7e3o'
+                      id='0ksvdljf9vrpg7rmnsmaib7e3o'>
+      <gd:when startTime='2011-07-05'/>
+    </gd:originalEvent>
+    <gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com'
+            rel='http://schemas.google.com/g/2005#event.organizer'
+	    valueString='Mozilla Sheriff Schedule'/>
+    <gd:when endTime='2011-07-06' startTime='2011-07-05'/>
+    <gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/>
+    <gCal:anyoneCanAddSelf value='false'/>
+    <gCal:guestsCanInviteOthers value='true'/>
+    <gCal:guestsCanModify value='false'/>
+    <gCal:guestsCanSeeGuests value='true'/>
+    <gCal:sequence value='0'/>
+    <gCal:uid value='0ksvdljf9vrpg7rmnsmaib7e3o@google.com'/>
+  </entry>
+  <entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20110701</id><published>2007-10-12T16:31:55.000Z</published><updated>2011-06-28T18:22:46.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Benjamin Smedberg (bsmedberg)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=bml0dTV2dmhsZ2o0YzMzNXRxMDcxZzEza2tfMjAxMTA3MDEgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20110701'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20110701/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk' id='nitu5vvhlgj4c335tq071g13kk'><gd:when startTime='2011-07-01'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2011-07-02' startTime='2011-07-01'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='nitu5vvhlgj4c335tq071g13kk@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/328n8se1hndrnipisg9poevi0k</id><published>2007-10-12T15:10:39.000Z</published><updated>2010-10-27T02:19:23.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Dietrich Ayala (dietrich) &amp; Margaret Leibovic (margaret)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=MzI4bjhzZTFobmRybmlwaXNnOXBvZXZpMGtfMjAxMDEwMTQgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/328n8se1hndrnipisg9poevi0k'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20101014
+DTEND;VALUE=DATE:20101015
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TH;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='2'/><gCal:uid value='328n8se1hndrnipisg9poevi0k@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/vj5uliaat6qg4fvssb5glf3j3c</id><published>2007-10-12T15:10:39.000Z</published><updated>2010-10-27T02:19:23.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Dietrich Ayala (dietrich)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=dmo1dWxpYWF0NnFnNGZ2c3NiNWdsZjNqM2NfMjAwNzA5MDYgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/vj5uliaat6qg4fvssb5glf3j3c'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20070906
+DTEND;VALUE=DATE:20070907
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TH;WKST=SU;UNTIL=20101013T000000Z
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='vj5uliaat6qg4fvssb5glf3j3c@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/qvtsh6dfha2c7hu3983rjvn3rc_20100901</id><published>2007-10-12T15:08:50.000Z</published><updated>2010-09-14T04:45:34.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Karl Tomlinson (karlt)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=cXZ0c2g2ZGZoYTJjN2h1Mzk4M3Jqdm4zcmNfMjAxMDA5MDEgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/qvtsh6dfha2c7hu3983rjvn3rc_20100901'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/qvtsh6dfha2c7hu3983rjvn3rc_20100901/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where valueString=''/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/qvtsh6dfha2c7hu3983rjvn3rc' id='qvtsh6dfha2c7hu3983rjvn3rc'><gd:when startTime='2010-09-01'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2010-09-02' startTime='2010-09-01'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='false'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='qvtsh6dfha2c7hu3983rjvn3rc@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/e6qnmdlhjkvbrtrbj9li2a85t0</id><published>2008-05-06T05:37:55.000Z</published><updated>2010-08-20T03:41:15.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Robert Strong (rs)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=ZTZxbm1kbGhqa3ZicnRyYmo5bGkyYTg1dDBfMjAwODA1MDggajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/e6qnmdlhjkvbrtrbj9li2a85t0'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where valueString=''/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20080508
+DTEND;VALUE=DATE:20080509
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TH;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='e6qnmdlhjkvbrtrbj9li2a85t0@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/fhurjqn4d8ep2mli5cj4usuma0</id><published>2007-10-12T15:08:18.000Z</published><updated>2010-05-17T05:30:31.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Johnathan Nightingale (johnath)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=Zmh1cmpxbjRkOGVwMm1saTVjajR1c3VtYTBfMjAwNzEwMTYgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/fhurjqn4d8ep2mli5cj4usuma0'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where valueString=''/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20071016
+DTEND;VALUE=DATE:20071017
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TU;WKST=SU;UNTIL=20100426T000000Z
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='false'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='fhurjqn4d8ep2mli5cj4usuma0@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/p4spd2vgmgasdgsdu633clsst4</id><published>2007-10-12T15:08:18.000Z</published><updated>2010-05-17T05:30:31.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>David Bolter (davidb) </title><content type='text'>Replacement for Johnathan Nightingale (johnath)</content><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=cDRzcGQydmdtZ2FzZGdzZHU2MzNjbHNzdDRfMjAxMDA0MjcgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/p4spd2vgmgasdgsdu633clsst4'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where valueString=''/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20100427
+DTEND;VALUE=DATE:20100428
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TU;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='false'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='2'/><gCal:uid value='p4spd2vgmgasdgsdu633clsst4@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/92aokouel4tgkfsk77a4g40280</id><published>2007-10-12T15:11:09.000Z</published><updated>2009-12-18T08:38:52.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Ehsan Akhgari (ehsan) &amp; Drew Willcoxon (adw)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=OTJhb2tvdWVsNHRna2Zzazc3YTRnNDAyODBfMjAwOTExMTYgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/92aokouel4tgkfsk77a4g40280'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20091116
+DTEND;VALUE=DATE:20091117
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=MO;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='4'/><gCal:uid value='92aokouel4tgkfsk77a4g40280@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2su13nko8isci5icg6qn65s63g</id><published>2007-10-12T15:11:09.000Z</published><updated>2009-12-18T08:38:52.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Curtis Bartley (cbartley)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=MnN1MTNua284aXNjaTVpY2c2cW42NXM2M2dfMjAwOTA3MTMgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2su13nko8isci5icg6qn65s63g'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20090713
+DTEND;VALUE=DATE:20090714
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=MO;WKST=SU;UNTIL=20091115T000000Z
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='2'/><gCal:uid value='2su13nko8isci5icg6qn65s63g@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/v29e8fjv2l0gcp3s25uhpkdcq0</id><published>2007-10-12T16:33:55.000Z</published><updated>2009-09-02T18:54:10.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Paul O'Shannessy (zpao)</title><content type='text'>(pinch hitting for Stuart, who is too busy or something)</content><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=djI5ZThmanYybDBnY3AzczI1dWhwa2RjcTBfMjAwOTA5MDcgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/v29e8fjv2l0gcp3s25uhpkdcq0'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20090907
+DTEND;VALUE=DATE:20090908
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=MO;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='2'/><gCal:uid value='v29e8fjv2l0gcp3s25uhpkdcq0@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/ic9gncnnot4godrt02nflf1864</id><published>2007-10-12T16:33:41.000Z</published><updated>2009-08-26T23:26:15.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>David Dahl (ddahl)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=aWM5Z25jbm5vdDRnb2RydDAybmZsZjE4NjRfMjAwOTA5MDQgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/ic9gncnnot4godrt02nflf1864'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20090904
+DTEND;VALUE=DATE:20090905
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=FR;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='2'/><gCal:uid value='ic9gncnnot4godrt02nflf1864@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/t77fonqeoquh3thjsrdesmpab4</id><published>2007-10-12T16:35:05.000Z</published><updated>2009-06-29T18:07:09.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Jeff Muizelaar (jrmuizel)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=dDc3Zm9ucWVvcXVoM3RoanNyZGVzbXBhYjRfMjAwOTA2MjIgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/t77fonqeoquh3thjsrdesmpab4'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20090622
+DTEND;VALUE=DATE:20090623
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=MO;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='2'/><gCal:uid value='t77fonqeoquh3thjsrdesmpab4@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20080815</id><published>2007-10-12T16:31:55.000Z</published><updated>2008-08-12T16:49:50.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>David Baron (dbaron)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=bml0dTV2dmhsZ2o0YzMzNXRxMDcxZzEza2tfMjAwODA4MTUgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20080815'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20080815/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk' id='nitu5vvhlgj4c335tq071g13kk'><gd:when startTime='2008-08-15'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-08-09' startTime='2008-08-08'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='nitu5vvhlgj4c335tq071g13kk@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/f8qcbgtlsabcud5da2vf5kj464_20080808</id><published>2007-10-12T15:10:52.000Z</published><updated>2008-08-12T16:49:48.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Ted Mielczarek (luser)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=ZjhxY2JndGxzYWJjdWQ1ZGEydmY1a2o0NjRfMjAwODA4MDggajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/f8qcbgtlsabcud5da2vf5kj464_20080808'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/f8qcbgtlsabcud5da2vf5kj464_20080808/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/f8qcbgtlsabcud5da2vf5kj464' id='f8qcbgtlsabcud5da2vf5kj464'><gd:when startTime='2008-08-08'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-08-16' startTime='2008-08-15'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='f8qcbgtlsabcud5da2vf5kj464@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/4nhldsigi65e13ocj4pl4p1kg0_20080818</id><published>2007-10-12T16:32:21.000Z</published><updated>2008-08-12T16:49:02.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Johnny Stenback (jst)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=NG5obGRzaWdpNjVlMTNvY2o0cGw0cDFrZzBfMjAwODA4MTggajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/4nhldsigi65e13ocj4pl4p1kg0_20080818'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/4nhldsigi65e13ocj4pl4p1kg0_20080818/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/4nhldsigi65e13ocj4pl4p1kg0' id='4nhldsigi65e13ocj4pl4p1kg0'><gd:when startTime='2008-08-18'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-08-13' startTime='2008-08-12'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='4nhldsigi65e13ocj4pl4p1kg0@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8_20080812</id><published>2008-04-07T05:08:13.000Z</published><updated>2008-08-12T16:48:59.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Joe Drew (JOEDREW!) (joe)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=MmtlbWw4aDFlcTlvYmYyaWM0czRvZXN1dThfMjAwODA4MTIgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8_20080812'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8_20080812/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8' id='2keml8h1eq9obf2ic4s4oesuu8'><gd:when startTime='2008-08-12'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-08-19' startTime='2008-08-18'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='2keml8h1eq9obf2ic4s4oesuu8@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/dim03ehdb9vbcl80rj3vhbhe7c_20080711</id><published>2007-10-12T16:33:41.000Z</published><updated>2008-07-08T00:10:08.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Myk Melez (myk)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=ZGltMDNlaGRiOXZiY2w4MHJqM3ZoYmhlN2NfMjAwODA3MTEgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/dim03ehdb9vbcl80rj3vhbhe7c_20080711'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/dim03ehdb9vbcl80rj3vhbhe7c_20080711/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/dim03ehdb9vbcl80rj3vhbhe7c' id='dim03ehdb9vbcl80rj3vhbhe7c'><gd:when startTime='2008-07-11'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-07-11' startTime='2008-07-10'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='dim03ehdb9vbcl80rj3vhbhe7c@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/7icapvgribbtvnkmtjaaf9g02k_20080710</id><published>2007-10-12T16:33:29.000Z</published><updated>2008-07-08T00:10:02.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Dan Veditz (dveditz)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=N2ljYXB2Z3JpYmJ0dm5rbXRqYWFmOWcwMmtfMjAwODA3MTAgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/7icapvgribbtvnkmtjaaf9g02k_20080710'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/7icapvgribbtvnkmtjaaf9g02k_20080710/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/7icapvgribbtvnkmtjaaf9g02k' id='7icapvgribbtvnkmtjaaf9g02k'><gd:when startTime='2008-07-10'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-07-12' startTime='2008-07-11'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='7icapvgribbtvnkmtjaaf9g02k@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20080704</id><published>2007-10-12T16:31:55.000Z</published><updated>2008-06-30T16:30:14.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>David Baron (dbaron)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=bml0dTV2dmhsZ2o0YzMzNXRxMDcxZzEza2tfMjAwODA3MDQgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20080704'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk_20080704/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/nitu5vvhlgj4c335tq071g13kk' id='nitu5vvhlgj4c335tq071g13kk'><gd:when startTime='2008-07-04'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-07-02' startTime='2008-07-01'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='nitu5vvhlgj4c335tq071g13kk@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8_20080701</id><published>2008-04-07T05:08:13.000Z</published><updated>2008-06-30T16:30:10.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Joe Drew (JOEDREW!) (joe)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=MmtlbWw4aDFlcTlvYmYyaWM0czRvZXN1dThfMjAwODA3MDEgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8_20080701'/><author><name>Mozilla Sherriff Schedule</name></author><gd:comments><gd:feedLink href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8_20080701/comments'/></gd:comments><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:originalEvent href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/2keml8h1eq9obf2ic4s4oesuu8' id='2keml8h1eq9obf2ic4s4oesuu8'><gd:when startTime='2008-07-01'/></gd:originalEvent><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:when endTime='2008-07-05' startTime='2008-07-04'/><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='2keml8h1eq9obf2ic4s4oesuu8@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/sf5qa68ruoalvspbopomg4rbqk</id><published>2007-10-12T17:05:48.000Z</published><updated>2008-06-12T22:15:07.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Mike Connor (mconnor)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=c2Y1cWE2OHJ1b2FsdnNwYm9wb21nNHJicWtfMjAwNzEwMDQgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/sf5qa68ruoalvspbopomg4rbqk'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20071004
+DTEND;VALUE=DATE:20071005
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TH;WKST=SU;UNTIL=20080611
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='sf5qa68ruoalvspbopomg4rbqk@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/ssqgciclmq3f7mvkejpvj5bf14</id><published>2008-06-12T22:15:07.000Z</published><updated>2008-06-12T22:15:07.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Brad Lassey (blassey)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=c3NxZ2NpY2xtcTNmN212a2VqcHZqNWJmMTRfMjAwODA2MTIgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/ssqgciclmq3f7mvkejpvj5bf14'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20080612
+DTEND;VALUE=DATE:20080613
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TH;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='ssqgciclmq3f7mvkejpvj5bf14@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/gj4lodlq6lpv3ij9eliemskkmo</id><published>2008-06-12T22:14:09.000Z</published><updated>2008-06-12T22:14:10.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Shawn Wilsher (sdwilsh)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=Z2o0bG9kbHE2bHB2M2lqOWVsaWVtc2trbW9fMjAwODA2MDUgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/gj4lodlq6lpv3ij9eliemskkmo'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20080605
+DTEND;VALUE=DATE:20080606
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TH;WKST=SU
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='gj4lodlq6lpv3ij9eliemskkmo@google.com'/></entry><entry><id>http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/ib8mvq6nvpva7mqipe92kegf2k</id><published>2007-10-12T16:34:38.000Z</published><updated>2008-06-12T22:14:09.000Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2005#event'/><title type='text'>Stan Shebs (shebs)</title><content type='text'/><link rel='alternate' type='text/html' href='http://www.google.com/calendar/event?eid=aWI4bXZxNm52cHZhN21xaXBlOTJrZWdmMmtfMjAwNzA5MjcgajZ0a3Zxa3VmOWVsdWFsOGwydGJ1azJ1bWtAZw' title='alternate'/><link rel='self' type='application/atom+xml' href='http://www.google.com/calendar/feeds/j6tkvqkuf9elual8l2tbuk2umk%40group.calendar.google.com/public/full/ib8mvq6nvpva7mqipe92kegf2k'/><author><name>Mozilla Sherriff Schedule</name></author><gd:eventStatus value='http://schemas.google.com/g/2005#event.confirmed'/><gd:where/><gd:who email='j6tkvqkuf9elual8l2tbuk2umk@group.calendar.google.com' rel='http://schemas.google.com/g/2005#event.organizer' valueString='Mozilla Sheriff Schedule'/><gd:recurrence>DTSTART;VALUE=DATE:20070927
+DTEND;VALUE=DATE:20070928
+RRULE:FREQ=WEEKLY;INTERVAL=6;BYDAY=TH;WKST=SU;UNTIL=20080604
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+
+</gd:recurrence><gd:transparency value='http://schemas.google.com/g/2005#event.transparent'/><gCal:anyoneCanAddSelf value='false'/><gCal:guestsCanInviteOthers value='true'/><gCal:guestsCanModify value='false'/><gCal:guestsCanSeeGuests value='true'/><gCal:sequence value='0'/><gCal:uid value='ib8mvq6nvpva7mqipe92kegf2k@google.com'/></entry></feed>

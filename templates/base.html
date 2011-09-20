@@ -40,6 +40,7 @@
   <meta charset="utf-8">
   <link rel="shortcut icon" href="/media/img/favicon.ico">
   <title>{% block page_title %}Mozilla Sheriff Duty{% endblock %}</title>
+  <link type="application/atom+xml" rel="alternate" href="{{ url('roster.feed.atom') }}" title="Mozilla Sheriff Duty Atom feed">
 {% block site_css %}
 {{ css('common_css') }}
 {% endblock %}
