@@ -3,8 +3,14 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Set up playdoh.
+# this does all the site.addsitedir(...) stuff
 import manage
+
+# don't assume that playdoh's manage.py has called setup_environ()
+import settings
+from django.core.management import setup_environ
+setup_environ(settings)
+
 from django.conf import settings
 
 config = settings.DATABASES['default']
