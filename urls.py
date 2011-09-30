@@ -32,7 +32,7 @@ v1_api.register(TomorrowResource())
 urlpatterns += patterns('',
     (r'^api/', include(v1_api.urls)),
 #    (r'^api/', lambda x: HttpResponseRedirect('/roster/api/documentation/')),
-    (r'^api/', redirect_to, {'url': '/roster/api/documentation/'}),
+    (r'^api/$', redirect_to, {'url': '/roster/api/documentation/'}),
 )
 
 
@@ -46,3 +46,10 @@ if settings.DEBUG:
         (r'^%s/(?P<path>.*)$' % media_url, 'django.views.static.serve',
          {'document_root': settings.MEDIA_ROOT}),
     )
+
+
+## Monkey patches
+
+# Monkey-patch django forms to avoid having to use Jinja2's |safe everywhere.
+import safe_django_forms
+safe_django_forms.monkeypatch()

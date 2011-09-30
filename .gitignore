@@ -19,3 +19,5 @@ settings/local*.py
 run_sheriffs_*.sh
 cover/
 dump.rdb
+git_release
+email_addresses.txt

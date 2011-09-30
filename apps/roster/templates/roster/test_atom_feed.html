@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tinderboxpushlog</title>
+</head>
+<body>
+
+<hr>
+<div id="wrapper">
+Current sheriff:
+<strong id="current-sheriff">
+</strong>
+</div>
+<hr>
+
+<p>This page simulates what <a href="https://tbpl.mozilla.org/">TBPL</a> does
+when it displays Sheriffs using the Google Calendar GData API.</p>
+<p>What you can expect to see is the sheriff(s) for today's date. <br>
+If there aren't any it should default to say '#developers'</p>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script>
+var url = '{{ url }}';
+
+var Config = {
+  mvtTimezoneOffset: -7
+};
+
+var L = function() {
+  if (window.console && window.console.log) console.log.apply(console, arguments);
+};
+
+if (!String.prototype.escapeContent) String.prototype.escapeContent = function String_escapeContent() {
+  return this.replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;");
+}
+
+var updateCalendar =  function (role, result, error) {
+  var fallbacks = {"sheriff": "#developers", "releng": "#build"};
+  if (error) {
+    $("#current-" + role).html('<span style="color:red; text-decoration:underline" title="Error: ' + (error.cause ? error.cause.statusText : error.message).escapeAttribute() + '">probably ' + fallbacks[role].escapeContent() + '</span>');
+    return;
+  }
+  var resultText = result.length ? result[0].getTitle().getText() : fallbacks[role];
+  //L('resultText', resultText);
+  var resultHTML = (resultText.charAt(0) == '#') ?
+    '<a href="irc://irc.mozilla.org/' + escape(resultText.slice(1)) + '">' +
+    resultText.escapeContent() + '</a>' : resultText.escapeContent();
+  $("#current-" + role).html(resultHTML);
+};
+
+
+// Ignore DST and find Mozilla Standard Time
+var mst = new Date(Date.now() +
+                  (new Date()).getTimezoneOffset() * 60 * 1000 +
+                  Config.mvtTimezoneOffset * 60 * 60 * 1000);
+google.setOnLoadCallback(function() {
+  var service = new google.gdata.calendar.CalendarService("mozilla-tinderbox");
+  var query = new google.gdata.calendar.CalendarEventQuery(url);
+  query.setMinimumStartTime(new google.gdata.DateTime(mst, true));
+  query.setOrderBy("starttime");
+  query.setSortOrder("ascending");
+  query.setMaxResults("1");
+  query.setSingleEvents(true);
+   service.getEventsFeed(query, function(root) {
+    console.log(root.feed.getEntries());
+    updateCalendar('sheriff', root.feed.getEntries());
+  }, function(error) {
+    console.log(error);
+    updateCalendar('sheriff', null, error);
+  });
+});
+google.load("jquery", "1.6.4");
+google.load("gdata", "1");
+
+
+</script>
+</body>
+</html>

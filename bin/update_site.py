@@ -15,7 +15,7 @@ Options:
 import os
 import sys
 from textwrap import dedent
-from optparse import  OptionParser
+from optparse import OptionParser
 from hashlib import md5
 
 # Constants
@@ -24,13 +24,13 @@ VENDOR  = 1
 
 ENV_BRANCH = {
     # 'environment': [PROJECT_BRANCH, VENDOR_BRANCH],
-    'dev':   ['base',   'master'],
+    'dev':   ['develop', 'master'],
     'stage': ['master', 'master'],
-    'prod':  ['prod',   'master'],
+    'prod':  ['master', 'master'],
 }
 
-# The URL of the SVN repository with the localization files (*.po). If you set 
-# it to a non-empty value, remember to `git rm --cached -r locale` in the root 
+# The URL of the SVN repository with the localization files (*.po). If you set
+# it to a non-empty value, remember to `git rm --cached -r locale` in the root
 # of the project.  Example:
 # LOCALE_REPO_URL = 'https://svn.mozilla.org/projects/l10n-misc/trunk/playdoh/locale'
 LOCALE_REPO_URL = ''

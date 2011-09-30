@@ -43,7 +43,7 @@ USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = False
+USE_L10N = True
 
 # Gettext text domain
 TEXT_DOMAIN = 'messages'
@@ -190,7 +190,8 @@ MINIFY_BUNDLES = {
         'core': (
             'js/libs/jquery-1.6.2.min.js',
             'js/notifications.js',
-            'js/calendar.js'
+            'js/calendar.js',
+            'js/common.js',
         ),
         'roster.initialize': (
             'js/roster/initialize.js',
@@ -314,6 +315,8 @@ BROKER_CONNECTION_TIMEOUT = 0.1
 CELERY_RESULT_BACKEND = 'amqp'
 CELERY_IGNORE_RESULT = True
 
+## Misc
+
 LOGIN_URL = '/users/login/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
@@ -322,6 +325,8 @@ DEFAULT_DATE_FORMAT = '%A, %B %d, %Y'
 EMAIL_SIGNATURE = """Mozilla Sheriff Duty
 https://sheriffs.mozilla.com
 """
+
+SESSION_COOKIE_AGE = 365 * (24 * 3600)   # default was 14, changed to 365 days
 
 # If you don't have a MAILINGLIST_EMAIL email address all emails will instead
 # be sent to all active and future sheriffs

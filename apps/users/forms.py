@@ -48,7 +48,7 @@ class AuthenticationForm(django.contrib.auth.forms.AuthenticationForm):
                                  'autocapitalize': 'off',
                                  'spellcheck': 'false',
                                }))
-    rememberme = forms.BooleanField(label="Remember me", required=False)
+
 
 class SettingsForm(forms.Form):
     username = forms.CharField(label="Username", max_length=75)
