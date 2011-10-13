@@ -44,7 +44,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
 import django.contrib.auth.views
 from django.conf import settings
-import jingo
+from django.shortcuts import render
 import forms
 from models import get_user_profile
 from django.shortcuts import render_to_response as django_render_to_response
@@ -69,9 +69,6 @@ def login(request):
         rememberme = request.POST.get('rememberme', None)
         if rememberme:
             request.session.set_expiry(settings.SESSION_COOKIE_AGE)
-            logging.debug((u'User (%s) logged in successfully with '
-                                        '"remember me" set') % user)
-
     return r
 
 
@@ -104,4 +101,4 @@ def settings_page(request):
         form = forms.SettingsForm(user=request.user, initial=initial)
 
     data['form'] = form
-    return jingo.render(request, 'users/settings.html', data)
+    return render(request, 'users/settings.html', data)

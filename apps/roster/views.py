@@ -49,7 +49,7 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.db import transaction
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
-import jingo
+from django.shortcuts import render
 import forms
 from utils.decorators import staff_required
 from utils import get_user_name
@@ -112,7 +112,7 @@ def initialize(request):
         form = forms.InitializeRosterForm(initial=initial)
     data['users'] = users
     data['form'] = form
-    return jingo.render(request, 'roster/initialize.html', data)
+    return render(request, 'roster/initialize.html', data)
 
 
 @transaction.commit_on_success
@@ -151,7 +151,7 @@ def replace(request):
         initial = {'starting': today}
         form = forms.ReplaceRosterForm(initial=initial)
     data['form'] = form
-    return jingo.render(request, 'roster/replace.html', data)
+    return render(request, 'roster/replace.html', data)
 
 
 def get_next_starting_date(today=None):
@@ -216,7 +216,7 @@ def index(request):
 
     data['include_past'] = include_past
     data['slots'] = slots
-    return jingo.render(request, 'roster/index.html', data)
+    return render(request, 'roster/index.html', data)
 
 
 def info_json(request):
@@ -470,7 +470,7 @@ def replace_slot(request, pk):
 
     data['form'] = form
     data['slot'] = slot
-    return jingo.render(request, 'roster/replace_slot.html', data)
+    return render(request, 'roster/replace_slot.html', data)
 
 
 def api_documentation(request):
@@ -489,7 +489,7 @@ def api_documentation(request):
     data['random_slot_id'] = random_slot_id
     data['slot_base_url'] = ('%s%s/%s/' %
       (base_url, base_path, SlotResource.Meta.resource_name))
-    return jingo.render(request, 'roster/api_documentation.html', data)
+    return render(request, 'roster/api_documentation.html', data)
 
 
 @login_required
@@ -547,4 +547,4 @@ var sheriff_options = {
     }
     data['count_default_code_lines'] = len(data['default_code'].splitlines())
     data['default_options'] = default_options
-    return jingo.render(request, 'roster/widget_factory.html', data)
+    return render(request, 'roster/widget_factory.html', data)

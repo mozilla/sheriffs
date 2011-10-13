@@ -40,13 +40,13 @@ from django import http
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.db.models import Max, Min
+from django.shortcuts import render
 from roster.models import Slot
-import jingo
 
 
 def handler404(request):
     data = {}
-    return jingo.render(request, '404.html', data, status=404)
+    return render(request, '404.html', data, status=404)
 
 
 def home(request):
@@ -194,7 +194,7 @@ def home(request):
     data['weeks'] = _get_calendar_data(year, month, week, request.user,
                                    sunday_first=True, weeks=6)
     data['month_options'] = _get_month_options(year, month, week, weeks=6)
-    return jingo.render(request, 'cal/home.html', data)
+    return render(request, 'cal/home.html', data)
 
 
 class Dict(dict):

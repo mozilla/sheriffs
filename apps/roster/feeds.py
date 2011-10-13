@@ -1,9 +1,9 @@
 import datetime
-import jingo
 from django.core.urlresolvers import reverse
 from django.utils.feedgenerator import Atom1Feed
 from django.conf import settings
 from django.contrib.syndication.views import Feed
+from django.shortcuts import render
 from .models import Slot
 from utils import get_user_name
 
@@ -68,4 +68,4 @@ class AtomRosterFeed(Feed):
 def test_atom_feed(request):  # pragma: no cover
     # this is not a unit test
     data = {'url': reverse('roster.feed.atom')}
-    return jingo.render(request, 'roster/test_atom_feed.html', data)
+    return render(request, 'roster/test_atom_feed.html', data)
