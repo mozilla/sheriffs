@@ -6,6 +6,7 @@ hmac==20101005
 hashlib==20081119
 py-bcrypt==0.2
 
-# for LDAP
-python-ldap==2.4.1
+# pinning to 2.3.13 since it's the last good version that compiles
+# cleanly on OSX
+python-ldap==2.3.13
 
