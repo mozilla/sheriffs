@@ -7,4 +7,5 @@ hashlib==20081119
 py-bcrypt==0.2
 
 # for LDAP
-python-ldap
+python-ldap==2.4.1
+
