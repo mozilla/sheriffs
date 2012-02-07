@@ -39,7 +39,16 @@ def fetch_user_details(email, force_refresh=False):
     return result
 
 
-def search_users(query, limit, autocomplete=False):
+def search_users(query, limit, autocomplete=False,
+                 search_keys=('givenName', 'sn', 'mail'),
+                 return_attributes=('cn', 'sn', 'mail', 'givenName', 'uid'),
+                 force_refresh=False):
+
+    cache_key = "_ldap_search_%s,%s" % (query, limit)
+    if not force_refresh:
+        _found = cache.get(cache_key)
+        if _found is not None:
+            return _found
     connection = ldap.initialize(settings.AUTH_LDAP_SERVER_URI)
     connection.set_option(ldap.OPT_PROTOCOL_VERSION, 3)
     if limit > 0:
@@ -51,7 +60,7 @@ def search_users(query, limit, autocomplete=False):
         if query.startswith(':'):
             searches = {'uid': query[1:]}
         else:
-            searches = {'givenName': query, 'sn': query, 'mail': query}
+            searches = dict((key, query) for key in search_keys)
             if ' ' in query:
                 # e.g. 'Peter b' or 'laura toms'
                 searches['cn'] = query
@@ -65,15 +74,27 @@ def search_users(query, limit, autocomplete=False):
             search_filter = '(|%s)' % search_filter
     else:
         if '@' in query and _valid_email(query):
-            search_filter = filter_format("(mail=%s)", (query, ))
+            filter_elems = []
+            #search_filter = filter_format("(mail=%s)", (query, ))
+            searches = dict((key, query) for key in search_keys
+                            if key in ('mail', 'bugzillaEmail'))
+            for key, value in searches.items():
+                if not value:
+                    continue
+                filter_elems.append(filter_format('(%s=%s)',
+                                                  (key, value)))
+            search_filter = ''.join(filter_elems)
+            if len(filter_elems) > 1:
+                search_filter = '(|%s)' % search_filter
         elif query.startswith(':'):
             search_filter = filter_format("(uid=%s)", (query[1:], ))
         else:
             search_filter = filter_format("(cn=*%s*)", (query, ))
-    attrs = ['cn', 'sn', 'mail', 'givenName', 'uid']
+#    print search_filter
     rs = connection.search_s("dc=mozilla", ldap.SCOPE_SUBTREE,
                             search_filter,
-                            attrs)
+                            return_attributes
+                        )
     results = []
     for each in rs:
         result = each[1]
@@ -82,6 +103,7 @@ def search_users(query, limit, autocomplete=False):
         if len(results) >= limit:
             break
 
+    cache.set(cache_key, results, 100)
     return results
 
 def _expand_result(result):

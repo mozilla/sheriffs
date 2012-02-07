@@ -8,6 +8,7 @@
 
 find . -name '*.pyc' -delete;
 
+rm -fr env
 virtualenv --no-site-packages env
 source env/bin/activate
 

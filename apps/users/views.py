@@ -48,8 +48,11 @@ from django.shortcuts import render
 import forms
 from models import get_user_profile
 from django.shortcuts import render_to_response as django_render_to_response
+from session_csrf import anonymous_csrf
 
 
+
+@anonymous_csrf
 def login(request):
     # mostly copied from zamboni
     logout(request)

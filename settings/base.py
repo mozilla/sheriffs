@@ -161,14 +161,28 @@ LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_DATE_FORMAT = '%A, %B %d, %Y'
 EMAIL_SIGNATURE = """Mozilla Sheriff Duty
-https://sheriffs.mozilla.com
+https://sheriffs.mozilla.org
 """
 
-SESSION_COOKIE_AGE = 365 * (24 * 3600)   # default was 14, changed to 365 days
 
 # If you don't have a MAILINGLIST_EMAIL email address all emails will instead
 # be sent to all active and future sheriffs
 #MAILINGLIST_EMAIL = 'sheriffs@mozilla.com'
+
+## Sessioning
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+SESSION_COOKIE_AGE = 365 * (24 * 3600)   # default was 14, changed to 365 days
+
+
+## Memcache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        'KEY_PREFIX': 'sheriffs',
+    }
+}
+
 
 try:
     ## LDAP

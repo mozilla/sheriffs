@@ -18,6 +18,14 @@ DATABASES = {
     },
 }
 
+#CACHES = {
+#    'default': {
+#        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#        'LOCATION': 'unique-snowflake'
+#    }
+#}
+
+
 AUTH_LDAP_SERVER_URI = 'ldap://pm-ns.mozilla.org'
 AUTH_LDAP_BIND_DN = xxxxx
 AUTH_LDAP_BIND_PASSWORD = xxxxx

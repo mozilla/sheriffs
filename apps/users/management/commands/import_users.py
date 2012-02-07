@@ -10,6 +10,7 @@ from .ldap_lookup import fetch_user_details
 
 class Command(BaseCommand):  #pragma: no cover
     help = "Imports a bunch of users that can be found in LDAP"
+
     args = '[fileofemailsaddress]'
     def handle(self, *args, **options):
         if not args:
