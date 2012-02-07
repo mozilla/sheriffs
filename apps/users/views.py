@@ -33,7 +33,6 @@
 #
 # ***** END LICENSE BLOCK *****
 
-import logging
 from django import http
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
@@ -46,33 +45,17 @@ import django.contrib.auth.views
 from django.conf import settings
 from django.shortcuts import render
 import forms
-from models import get_user_profile
-from django.shortcuts import render_to_response as django_render_to_response
 from session_csrf import anonymous_csrf
-
 
 
 @anonymous_csrf
 def login(request):
-    # mostly copied from zamboni
     logout(request)
 
-    from monkeypatch_template_engine import jinja_for_django as jfd
-    django.contrib.auth.views.render_to_response = jfd
-    r = django.contrib.auth.views.login(request,
-                         template_name='users/login.html',
-                         redirect_field_name=REDIRECT_FIELD_NAME,
-                         authentication_form=forms.AuthenticationForm)
-
-    if isinstance(r, http.HttpResponseRedirect):
-        # Succsesful log in according to django. Now we do our checks. I do
-        # the checks here instead of the form's clean() because I want to use
-        # the messages framework and it's not available in the request there
-        user = get_user_profile(request.user)
-        rememberme = request.POST.get('rememberme', None)
-        if rememberme:
-            request.session.set_expiry(settings.SESSION_COOKIE_AGE)
-    return r
+    return django.contrib.auth.views.login(request,
+                     template_name='users/login.html',
+                     redirect_field_name=REDIRECT_FIELD_NAME,
+                     authentication_form=forms.AuthenticationForm)
 
 
 def logout(request):
