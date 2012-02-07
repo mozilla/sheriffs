@@ -45,6 +45,7 @@ from django.shortcuts import render
 from roster.models import Slot
 from utils import get_user_name
 
+
 def vcal(request):
     data = {}
     data['page_title'] = "vCal exports"
@@ -55,6 +56,7 @@ def vcal(request):
                                      or request.user.username)
     data['authenticated_user_string'] = authenticated_user_string
     return render(request, 'vcal/vcal.html', data)
+
 
 def my_dates(request):
     if not request.GET.get('user'):
@@ -78,6 +80,7 @@ def my_dates(request):
                      filename='My Sheriff Duty.ics',
                      summary='Sheriff Duty')
 
+
 def all_dates(request, extra_filter=None, filename="Sheriff Duty.ics",
               summary=None):
     # by giving it a verbose filnema like 'Sheriff Duty.css' means it's
@@ -97,7 +100,8 @@ def all_dates(request, extra_filter=None, filename="Sheriff Duty.ics",
     home_url = base_url + reverse('cal.home')
     for slot in slots[:31]:
         event = cal.add('vevent')
-        event.add('summary').value = (summary and summary or get_user_name(slot.user))
+        event.add('summary').value = (summary and summary
+                                      or get_user_name(slot.user))
         event.add('dtstart').value = slot.date
         event.add('dtend').value = slot.date
         url = (home_url + '?cal_y=%d&cal_m=%d' %

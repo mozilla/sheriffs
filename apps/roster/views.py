@@ -502,7 +502,8 @@ def widget_factory(request):  # pragma: no cover
        'whether to say "Today" or "Thursday" instead of the full date'),
       ('limit', 5, 'number of items to display'),
       ('root_css', '',
-       'possible extra CSS added to the root widget element (e.g. color:#ccc)'),
+       'possible extra CSS added to the root widget element '
+       '(e.g. color:#ccc)'),
       ('include_footer', True,
        'include the footer link back to Mozilla Sheriffs Duty'),
       ('host_name', this_domain,

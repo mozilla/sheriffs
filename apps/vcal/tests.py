@@ -48,6 +48,7 @@ import vobject
 def fmt(date):
     return date.strftime(settings.DEFAULT_DATE_FORMAT)
 
+
 class VCalTest(TestCase):
 
     def test_vcal_home_page(self):
@@ -164,4 +165,5 @@ class VCalTest(TestCase):
         ok_('My Sheriff Duty.ics' in response['Content-Disposition'])
 
         payload = response.content
-        parsed = vobject.readComponents(payload)
+        # this should just work
+        vobject.readComponents(payload)

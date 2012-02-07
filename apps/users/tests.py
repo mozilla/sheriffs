@@ -215,31 +215,32 @@ class UsersTest(TestCase):
           password='secret',
         )
 
-        response = self.client.post(url, {'username':' Maxpower '})
+        response = self.client.post(url, {'username': ' Maxpower '})
         eq_(response.status_code, 200)
         ok_('errorlist' in response.content)
 
-        response = self.client.post(url, {'username':'homer   '})
+        response = self.client.post(url, {'username': 'homer   '})
         eq_(response.status_code, 302)
 
         ok_(User.objects.get(username='homer'))
         ok_(not User.objects.filter(username='mortal').exists())
 
         # stupid but I should be able to save my own username twice
-        response = self.client.post(url, {'username':'homer'})
+        response = self.client.post(url, {'username': 'homer'})
         ok_(User.objects.get(username='homer'))
 
-        response = self.client.post(url, {'username':'Homer'})
+        response = self.client.post(url, {'username': 'Homer'})
         ok_(User.objects.get(username='Homer'))
 
     def test_mozilla_ldap_backend_basic(self):
         if MozillaLDAPBackend is None:
             return
         back = MozillaLDAPBackend()
+
         class LDAPUser:
             def __init__(self, attrs):
                 self.attrs = attrs
-        ldap_user = LDAPUser({'mail':['mail@peterbe.com']})
+        ldap_user = LDAPUser({'mail': ['mail@peterbe.com']})
         user, created = back.get_or_create_user('peter', ldap_user)
         ok_(created)
         ok_(user)

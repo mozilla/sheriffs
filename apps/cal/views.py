@@ -105,6 +105,7 @@ def home(request):
         return date.strftime('%A')
 
     extra_i = 0
+
     def is_weekend(date):
         return date.strftime('%A') in ('Saturday', 'Sunday')
 
@@ -267,7 +268,9 @@ def _get_calendar_data(year, month, week, user, sunday_first=False, weeks=5):
     all_slots = defaultdict(list)
     unclaimed = []
     users = defaultdict(list)
-    for slot in Slot.objects.filter(date__range=date_range).select_related('user'):
+    for slot in (Slot.objects
+                 .filter(date__range=date_range)
+                 .select_related('user')):
         all_slots[slot.date].append(slot)
         users[slot.date].append(slot.user)
         if slot.swap_needed:

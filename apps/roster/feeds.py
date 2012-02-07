@@ -1,7 +1,6 @@
 import datetime
 from django.core.urlresolvers import reverse
 from django.utils.feedgenerator import Atom1Feed
-from django.conf import settings
 from django.contrib.syndication.views import Feed
 from django.shortcuts import render
 from .models import Slot

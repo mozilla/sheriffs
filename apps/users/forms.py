@@ -63,5 +63,6 @@ class SettingsForm(forms.Form):
             .filter(username__iexact=value)
             .exclude(pk=self.user.pk)
             .exists()):
-            raise forms.ValidationError("Username already used by someone else")
+            raise forms.ValidationError(
+                "Username already used by someone else")
         return value
