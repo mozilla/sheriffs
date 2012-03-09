@@ -83,54 +83,21 @@ MINIFY_BUNDLES = {
 
 ## Middlewares, apps, URL configs.
 
-#MIDDLEWARE_CLASSES = (
-#    #'commons.middleware.LocaleURLMiddleware',
-#    'django.middleware.common.CommonMiddleware',
-#    'django.contrib.sessions.middleware.SessionMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
-#    'django.contrib.auth.middleware.AuthenticationMiddleware',
-#    'django.contrib.messages.middleware.MessageMiddleware',
-#    #'session_csrf.CsrfMiddleware',
-#    'commonware.middleware.FrameOptionsHeader',
-#    'commonware.middleware.HidePasswordOnException',
-#)
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
 MIDDLEWARE_CLASSES.remove('funfactory.middleware.LocaleURLMiddleware')
 MIDDLEWARE_CLASSES.append('commonware.middleware.HidePasswordOnException')
+MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
 
+
+JINGO_EXCLUDE_APPS = (
+  'admin',
+)
 
 AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 
 INSTALLED_APPS += (
-#    # Local apps
-#    'commons',  # Content common to most playdoh-based apps.
-#    'jingo_minify',
-#    'tower',  # for ./manage.py extract (L10n)
-
-#    # We need this so the jsi18n view will pick up our locale directory.
-#    ROOT_PACKAGE,
-
-#    # Third-party apps
-#    'commonware.response.cookies',
-#    #'djcelery',
-#    'django_nose',
-
-    # Django contrib apps
-#    'django.contrib.auth',
-#    'django_sha2',  # Load after auth to monkey-patch it.
-
-#    'django.contrib.contenttypes',
-#    'django.contrib.sessions',
-#    # 'django.contrib.sites',
-#    # 'django.contrib.messages',
-#    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-#    # Uncomment the next line to enable admin documentation:
-#    # 'django.contrib.admindocs',
-
-#    # L10n
-#    'product_details',
 
     # sheriffs specific
     'users',
