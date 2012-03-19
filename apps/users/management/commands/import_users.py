@@ -54,6 +54,7 @@ class Command(BaseCommand):  #pragma: no cover
         user.last_name = details['sn']
         user.username = details['uid']
         user.set_unusable_password()
+        user.save()
 
-        print "Created", email
+        print "Set", email
         #print "\t", get_user_name(user)
