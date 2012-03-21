@@ -141,6 +141,9 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 SESSION_COOKIE_AGE = 365 * (24 * 3600)   # default was 14, changed to 365 days
 
 
+## Messaging
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 ## Memcache
 CACHES = {
     'default': {
