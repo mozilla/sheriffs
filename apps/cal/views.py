@@ -18,6 +18,7 @@
 # the Initial Developer. All Rights Reserved.
 #
 # Contributor(s):
+#    Peter Bengtsson <peterbe@mozilla.com>
 #
 # Alternatively, the contents of this file may be used under the terms of
 # either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -41,8 +42,8 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.db.models import Max, Min
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from roster.models import Slot
-
 
 def handler404(request):
     data = {}
@@ -109,27 +110,38 @@ def home(request):
     def is_weekend(date):
         return date.strftime('%A') in ('Saturday', 'Sunday')
 
-    for i in -1, 0, 1, 2, 3:
+    _days_back_and_forth = -1, 0, 1, 2, 3
+    # to reduce queries, first make a collection of all slots access these days
+    _all_slots = {}
+    _all_user_ids = set()
+    _min_date = today + datetime.timedelta(days=_days_back_and_forth[0])
+    _max_date = today + datetime.timedelta(days=_days_back_and_forth[-1] + 1)
+    for slot in (Slot.objects
+                 .filter(date__gte=_min_date,
+                         date__lt=_max_date)):
+        _all_slots[slot.date] = slot
+        _all_user_ids.add(slot.user_id)
+
+    # to avoid having to do a JOIN in the query above, fetch all users once
+    _all_users = {}
+    for user in User.objects.filter(pk__in=_all_user_ids):
+        _all_users[user.pk] = user
+
+    for i in _days_back_and_forth:
         date = today + datetime.timedelta(days=i + extra_i)
-        #while date.strftime('%A') in ('Saturday', 'Sunday'):
-        #    extra_i += 1
-        #    date = today + datetime.timedelta(days=i + extra_i)
 
         remarks = []
         users = []
         try:
-            slot = (Slot.objects
-                        .select_related('user')
-                      .get(date__gte=date,
-                           date__lt=date + datetime.timedelta(days=1))
-                      )
+            slot = _all_slots[date]
             pk = slot.pk
+            slot.user = _all_users[slot.user_id]
             users.append(slot.user)
             if slot.swap_needed:
                 remarks.append('swap-needed')
             if slot.user == request.user:
                 remarks.append('self')
-        except Slot.DoesNotExist:
+        except KeyError:
             pk = None
             if date >= today:
                 if is_weekend(date):
