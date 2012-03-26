@@ -43,7 +43,7 @@ class AuthenticationForm(django.contrib.auth.forms.AuthenticationForm):
     key to authentication."""
     # allows for using email to log in
     username = forms.CharField(label="Username", max_length=75,
-                               widget=forms.widgets.Input(attrs={
+                               widget=forms.widgets.TextInput(attrs={
                                  'autocorrect': 'off',
                                  'autocapitalize': 'off',
                                  'spellcheck': 'false',
