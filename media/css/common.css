@@ -113,8 +113,8 @@ a:hover {
 	background: #424242;
 	height: 6.68em;
 	margin: 1.5em 0;
-	-moz-border-radius: .5em;
-	-webkit-border-radius: .5em;
+	-webkit-border-radius: .4em;
+	border-radius: .4em;
 	}
 	#header h1 {
 		position: absolute;
@@ -152,8 +152,8 @@ a:hover {
 		}
 	#tabs a {
 		padding: .5em 1em;
-		-moz-border-radius: .25em .25em 0 0;
 		-webkit-border-radius: .25em;
+		border-radius: .25em .25em 0 0;
 		-webkit-border-bottom-left-radius: 0;
 		-webkit-border-bottom-right-radius: 0;
 		background: #727167;

@@ -46,8 +46,8 @@ section ul {
     }
 p.uri {
     padding:10px 15px; background-color:#333;
-    -moz-border-radius: .5em;
-    -webkit-border-radius: .5em;
+    -webkit-border-radius: .4em;
+    border-radius: .4em;
     }
     p.uri {
         color: #eee;
