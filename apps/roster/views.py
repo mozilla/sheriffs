@@ -268,7 +268,7 @@ def offer_swap(request):
       'comment': comment,
     }
     body = template.render(Context(context)).strip()
-    subject = 'Offer to swap Sheriff duty'
+    subject = 'Offer to sub Sheriff duty'
     from_ = settings.SEND_EMAIL_FROM
     tos = [slot.user.email]
     worked = send_mail(subject, body, from_, tos)

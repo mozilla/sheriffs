@@ -330,7 +330,7 @@ class RosterTest(TestCase):
         email = mail.outbox[-1]
         eq_(email.to, [admin.email])
         ok_('offer' in email.subject.lower())
-        ok_('swap' in email.subject.lower())
+        ok_('sub' in email.subject.lower())
         eq_(email.from_email, settings.SEND_EMAIL_FROM)
         eq_(email.body.lstrip(), email.body)
         ok_(slot.date.strftime(settings.DEFAULT_DATE_FORMAT) in email.body)
